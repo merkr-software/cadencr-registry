@@ -21,3 +21,15 @@ This bootstrap does not change active workflows, packages, submissions, branch
 protections, signing keys or publication authority. Existing JavaScript validation
 remains active until a separate reviewed trusted-base workflow cutover. Protected
 publication workflows remain inert under `examples/workflows/`.
+
+## Validation-helper refresh — 2026-10-17
+
+`scripts/ci/validate-provider-contribution.sh` is refreshed byte-for-byte from
+`tooling/marketplace-registry` in `merkr-software/cadencr` at commit
+`5eb6bc3e3d49f8686995f36c5614639a5e382e10`. The helper retains its validation scratch
+directory on every outcome, including executable-bootstrap failure.
+
+The registry-qualified CLI pin remains `0.13.1-dev.38974097824.1` unchanged;
+newer author-only QA is not registry qualification and does not promote that pin.
+This refresh changes no active workflows, registry data, branch protections,
+signing keys or publication authority.
