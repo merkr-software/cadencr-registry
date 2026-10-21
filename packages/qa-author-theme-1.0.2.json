@@ -8,7 +8,7 @@
       "publisher": "qa-author"
     },
     "theme": {
-      "description": "Inert original-author qualification; never execute.",
+      "description": "Inert altered immutable version; rejection expected.",
       "distribution": {
         "archive": "https://github.com/merkr-software/cadencr-registry-qa/releases/download/qa-author-cli%2Frust-cutover-theme-39306959010/theme.tar.gz",
         "sha256": "a7ba859dfa2579d17a168c4cdfc016189750f58a5ee142f4c0fd622ffcabe500"
