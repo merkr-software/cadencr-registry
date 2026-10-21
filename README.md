@@ -1,45 +1,63 @@
 # Cadencr Registry
 
-Official public registry metadata for Cadencr managed providers.
+Official public registry metadata and distribution assets for Cadencr providers,
+themes and custom tabs.
 
-## Current state
+## Runtime and repository layout
 
-The registry is intentionally empty. No provider package or catalogue has been
-published from this repository. Provider contributions belong in paired files:
+All validation, packaging, signing and publication business rules live in the
+Rust `cadencr` CLI, maintained and tested in the Cadencr monorepo. This repository
+has no JavaScript business engine or npm installation step.
 
-- `packages/<provider>-<version>.json`
-- `submissions/<provider>-<version>.json`
+| Path                  | Purpose                                                           |
+| --------------------- | ----------------------------------------------------------------- |
+| `packages/`           | Immutable package metadata                                        |
+| `submissions/`        | Matching source-pinned submissions                                |
+| `schemas/`            | Structural reference schemas; semantic CLI validation is required |
+| `ci/released-cli.env` | Reviewed released executable version, tag and SHA-256             |
+| `scripts/ci/`         | Trusted acquisition and CI process helpers                        |
+| `tests/fixtures/`     | Frozen historical compatibility data, not executable tests        |
+| `examples/workflows/` | Inactive publication design examples                              |
 
-Every change requires human review by `@rle-mino`. Pull requests run only the
-unprivileged metadata-validation workflow; it does not download or execute
-provider archives and has no publication credentials.
+Use the exact released executable selected by `ci/released-cli.env`:
+`0.13.1-dev.39306959010.1`. Verify the release checksum and exact version before
+execution; do not substitute an unreviewed local build or a fallback runtime.
+See the [public CLI contract](https://github.com/merkr-software/cadencr/blob/646864caeca2896170baa65d5389b475099b2ce1/packages/cli/README.md).
 
-## Local verification
+## Local metadata checks
 
-Requires Node `>=22.19.0 <23.0.0`.
-
-```bash
-npm ci --ignore-scripts --no-audit --no-fund
-npm test
-npm run validate
+```sh
+cadencr registry validate-metadata /reviewed/package.json
+cadencr registry validate-submission /reviewed/submission.json
+cadencr registry validate --base /reviewed/base --candidate /reviewed/candidate
+cadencr registry build-index --schema-version 2 \
+  --packages /reviewed/candidate/packages \
+  --generated-at YYYY-MM-DDTHH:mm:ssZ --expires-at YYYY-MM-DDTHH:mm:ssZ \
+  --output /trusted/new-unsigned-index.json
 ```
 
-Contributor format and security policy are documented in `AUTHORING.md`,
-`CONTRIBUTING.md`, and `SECURITY.md`. Protected signing/publication workflows are
-inactive examples under `examples/workflows/`; activating them requires a
-separate security review, pinned trust configuration, protected environment,
-and explicit key-management decision.
+Use actual whole-second UTC timestamps within the CLI's validity bounds. Outputs
+must be new files. Metadata validation does not authenticate signatures, establish
+publisher authority, or publish anything. Unsigned index assembly is not signing.
 
-See `SOURCE_PROVENANCE.md` for the exact source revision.
+## Review and publication boundaries
 
-## Build a local unsigned index
+Contributions use paired immutable package and source-pinned submission files.
+Unprivileged CI is advisory; maintainer acceptance includes ownership and provenance
+review. There is no formal CI or GitHub review merge gate: `rle-mino` is the sole
+writer to `main`. Candidate metadata is inert: CI obtains
+its helpers and released CLI pin from the trusted base and never executes a
+contributor archive. Maintainers separately review ownership and source provenance.
 
-After adding real package metadata, an optional local smoke test is:
+Protected publication is a separate operator decision. Examples remain outside
+`.github/workflows/` and are not deployed publishers. They do not configure
+repository protections, grant credentials, activate a catalog, or prove hosted
+qualification. Never put private keys or credentials in this repository.
 
-```bash
-generated_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-expires_at="$(node -e 'console.log(new Date(Date.now() + 7 * 86400000).toISOString())')"
-npm run build:index -- --generated-at "$generated_at" --expires-at "$expires_at" --output /tmp/cadencr-managed-index.json
-```
+The legacy JSON schemas are provider-only reference contracts, not schema-2
+theme/tab schemas. Use the public CLI contract for all three kinds.
 
-This produces only a local unsigned file. It does not sign, upload, or publish a catalog.
+Implementation and orchestration tests are authoritative in the Cadencr monorepo;
+this registry retains historical fixture data only, not a second test engine.
+See [authoring](AUTHORING.md), [contribution policy](CONTRIBUTING.md),
+[security](SECURITY.md), and the unchanged [source provenance](SOURCE_PROVENANCE.md).

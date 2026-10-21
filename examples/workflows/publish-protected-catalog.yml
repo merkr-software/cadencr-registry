@@ -21,11 +21,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.sha }}
           persist-credentials: false
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 22.19.0
       - name: Confirm reviewed publication request
@@ -55,6 +55,12 @@ jobs:
           JSON.parse(bytes.toString("utf8"));
           NODE
 
+      - name: Select verified publisher runtime
+        id: publisher_runtime
+        env:
+          CLI_ROOT: ${{ runner.temp }}/marketplace-released-cli
+        run: sh scripts/ci/select-publisher-runtime.sh
+
   publish:
     needs: preflight
     if: needs.preflight.result == 'success' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
@@ -64,11 +70,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.sha }}
           persist-credentials: false
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 22.19.0
       - name: Reconfirm reviewed publication request
@@ -90,6 +96,11 @@ jobs:
           const actual = createHash("sha256").update(readFileSync(file)).digest("hex");
           if (actual !== expected) throw new Error("reviewed publication request digest mismatch");
           NODE
+      - name: Select verified publisher runtime
+        id: publisher_runtime
+        env:
+          CLI_ROOT: ${{ runner.temp }}/marketplace-released-cli
+        run: sh scripts/ci/select-publisher-runtime.sh
       - name: Create bounded publication state directory
         env:
           PUBLICATION_STATE: ${{ runner.temp }}/marketplace-publication-state
@@ -121,14 +132,26 @@ jobs:
           CADENCR_REGISTRY_GITHUB_TOKEN: ${{ secrets.CADENCR_REGISTRY_GITHUB_TOKEN }}
           CONFIRM_REQUEST_SHA256: ${{ inputs.confirm-request-sha256 }}
           PRIVATE_KEY_FILE: ${{ steps.materialize_key.outputs.private_key_file }}
-        run: >-
-          node scripts/publish-registry.mjs
-          --request publication-request.json
-          --directory "$RUNNER_TEMP/marketplace-publication-state"
-          --repository "$GITHUB_REPOSITORY"
-          --registry-commit "$GITHUB_SHA"
-          --private-key "$PRIVATE_KEY_FILE"
-          --confirm-request-sha256 "$CONFIRM_REQUEST_SHA256"
+          VERIFIED_CLI: ${{ steps.publisher_runtime.outputs.cli_file }}
+        run: |
+          node <<'NODE'
+          const { spawnSync } = require("node:child_process");
+          const { join } = require("node:path");
+          const args = [
+            "--request", "publication-request.json",
+            "--directory", join(process.env.RUNNER_TEMP, "marketplace-publication-state"),
+            "--repository", process.env.GITHUB_REPOSITORY,
+            "--registry-commit", process.env.GITHUB_SHA,
+            "--private-key", process.env.PRIVATE_KEY_FILE,
+            "--confirm-request-sha256", process.env.CONFIRM_REQUEST_SHA256,
+          ];
+          const command = process.env.VERIFIED_CLI;
+          const prefix = ["registry", "publish-registry"];
+          if (!command) throw new Error("missing verified CLI");
+          const result = spawnSync(command, [...prefix, ...args], { stdio: "inherit" });
+          if (result.error) throw result.error;
+          if (result.status !== 0) throw new Error("registry publication failed");
+          NODE
       - name: Remove materialized signing key
         if: ${{ always() && steps.materialize_key.outputs.private_key_file != '' }}
         env:
@@ -158,18 +181,9 @@ jobs:
             if (error?.code !== "ENOENT") throw error;
           }
           NODE
-      - name: Preserve publication recovery state
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: marketplace-publication-state-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/marketplace-publication-state/
-          if-no-files-found: warn
-          retention-days: 7
-          include-hidden-files: true
       # Fresh runners reconstruct published provider state only after tag,
       # binding, public provenance and archive verification. No Actions artifact
       # is restored or executed. Reruns retain the original reviewed commit,
       # request and publication window; expiry still fails closed. Unpublished
       # drafts require source archives when no local staging state survives.
-      # Recovery artifacts remain optional operator diagnostics, not authority.
+      # Raw recovery state is not uploaded: it is not publication authority.
