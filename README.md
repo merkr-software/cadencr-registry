@@ -20,9 +20,9 @@ has no JavaScript business engine or npm installation step.
 | `examples/workflows/` | Inactive publication design examples                              |
 
 Use the exact released executable selected by `ci/released-cli.env`:
-`0.13.1-dev.39306959010.1`. Verify the release checksum and exact version before
+`0.14.2`. Verify the release checksum and exact version before
 execution; do not substitute an unreviewed local build or a fallback runtime.
-See the [public CLI contract](https://github.com/merkr-software/cadencr/blob/646864caeca2896170baa65d5389b475099b2ce1/packages/cli/README.md).
+See the [public CLI contract](https://github.com/merkr-software/cadencr/blob/7bd611a0d10bfd161bb71f0f87ad693313b2c24f/packages/cli/README.md).
 
 ## Local metadata checks
 

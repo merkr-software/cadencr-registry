@@ -2,10 +2,11 @@
 
 ## Reporting and review
 
-Do not disclose vulnerabilities or credentials in a public pull request. Use the
-repository's private vulnerability reporting channel when available. Maintainers
-may suspend review, delist or revoke compromised packages; discovery removal and
-signed execution revocation are separate operations.
+Do not disclose vulnerabilities or credentials in a public issue or pull request.
+Report them privately through the repository's **Security → Report a vulnerability**
+form (GitHub private vulnerability reporting). Maintainers may suspend review,
+delist or revoke compromised packages; discovery removal and signed execution
+revocation are separate operations.
 
 Metadata checks do not prove publisher authority, source-to-binary provenance,
 archive safety or runtime conformance. Review source ownership, immutable tag and
@@ -34,5 +35,5 @@ releases or rolling back discovery. Verified recovery is not a distributed
 transaction; external privileged mutation remains possible. Consumers must verify
 signatures, digests and continuity against explicitly configured trust roots.
 
-See the [public CLI contract](https://github.com/merkr-software/cadencr/blob/646864caeca2896170baa65d5389b475099b2ce1/packages/cli/README.md)
+See the [public CLI contract](https://github.com/merkr-software/cadencr/blob/7bd611a0d10bfd161bb71f0f87ad693313b2c24f/packages/cli/README.md)
 for signing, publication, restoration and discovery guarantees and limits.

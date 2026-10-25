@@ -57,3 +57,14 @@ Latest qualification also covers provider, theme and tab author flows, mixed
 incremental publication and renewal of the 11-entry/14-archive QA catalog; see
 the dated qualification record and exact public run IDs bound by this review
 manifest. This remains isolated QA evidence, not production deployment.
+
+## Stable CLI pin - 2026-10-25
+
+The pin selects stable CLI `0.14.2`, tag `cli/v0.14.2`, Linux SHA-256
+`1a2c28a13009c303e01148fe87b54fa77936bcfbe3947c51db918cbae5477849`, released
+from public CadencR source commit `7bd611a0d10bfd161bb71f0f87ad693313b2c24f`.
+`scripts/ci/fetch-released-cli.sh` now accepts canonical stable `cli/vX.Y.Z`
+tags alongside development tags, byte-for-byte with the CadencR template; legacy
+parsing, digest, version, redirect and output checks are unchanged.
+This changes no registry packages, protections, signing keys or publication
+authority.
