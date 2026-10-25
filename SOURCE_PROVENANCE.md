@@ -68,3 +68,17 @@ tags alongside development tags, byte-for-byte with the CadencR template; legacy
 parsing, digest, version, redirect and output checks are unchanged.
 This changes no registry packages, protections, signing keys or publication
 authority.
+
+## Protected publisher deployment - 2026-10-25
+
+The pin selects stable CLI `0.15.2`, tag `cli/v0.15.2`, Linux SHA-256
+`f4a719871f776bdbbb9845ac98eb381a85da5730237e0c9b50c2e15198fc4031`, released
+from public CadencR source commit `07a41cbcacbcf7bdcfddb514313cbe9d146c101b`.
+The workflows `prepare-protected-publication`, `publish-protected-catalog`,
+`bootstrap-revocation-policies`, `renew-protected-catalog` and
+`watch-registry-expiry`, and `scripts/ci/registry-feeds.sh`, are copied
+byte-for-byte from `tooling/marketplace-registry` at CadencR commit
+`16469b9f2f614cf940135ac2751f24e23696ed12`; the former inactive copies under
+`examples/workflows/` are removed. The jobs stay inert until
+`CADENCR_REGISTRY_CATALOG_URL` is set. This changes no registry packages,
+submissions, branch protections or signing keys.
