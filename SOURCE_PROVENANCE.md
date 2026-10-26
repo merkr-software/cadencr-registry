@@ -82,3 +82,13 @@ byte-for-byte from `tooling/marketplace-registry` at CadencR commit
 `examples/workflows/` are removed. The jobs stay inert until
 `CADENCR_REGISTRY_CATALOG_URL` is set. This changes no registry packages,
 submissions, branch protections or signing keys.
+
+## Allowed action pins - 2026-10-26
+
+This repository allows only `actions/checkout@11d5960a326750d5838078e36cf38b85af677262`
+and `actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020`, with SHA
+pinning required. The publication, policy bootstrap, renewal and watch workflows
+are refreshed byte-for-byte from CadencR commit
+`8a4203bea9d7596c06bda9470929466655e52862`, which uses those pins.
+`prepare-protected-publication` is removed: its unsigned index upload needs an
+action this repository does not allow, and publication does not depend on it.
