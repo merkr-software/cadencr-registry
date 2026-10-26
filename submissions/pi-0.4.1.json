@@ -1,0 +1,57 @@
+{
+  "changelog": "Official plugin release plugins/provider-pi/v0.4.1",
+  "package": {
+    "kind": "provider",
+    "package": {
+      "agent": {
+        "description": "External Cadencr provider connector for Pi's native RPC mode",
+        "distribution": {
+          "binary": {
+            "darwin-aarch64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/plugins%2Fprovider-pi%2Fv0.4.1/provider-pi-0.4.1-darwin-aarch64.tar.gz",
+              "cmd": "bin/provider",
+              "sha256": "673033b55a4438af95b10e1c37e480bfc4243af512d7c9e9110a9f2872a7a0a8"
+            },
+            "darwin-x86_64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/plugins%2Fprovider-pi%2Fv0.4.1/provider-pi-0.4.1-darwin-x86_64.tar.gz",
+              "cmd": "bin/provider",
+              "sha256": "673033b55a4438af95b10e1c37e480bfc4243af512d7c9e9110a9f2872a7a0a8"
+            },
+            "linux-aarch64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/plugins%2Fprovider-pi%2Fv0.4.1/provider-pi-0.4.1-linux-aarch64.tar.gz",
+              "cmd": "bin/provider",
+              "sha256": "673033b55a4438af95b10e1c37e480bfc4243af512d7c9e9110a9f2872a7a0a8"
+            },
+            "linux-x86_64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/plugins%2Fprovider-pi%2Fv0.4.1/provider-pi-0.4.1-linux-x86_64.tar.gz",
+              "cmd": "bin/provider",
+              "sha256": "673033b55a4438af95b10e1c37e480bfc4243af512d7c9e9110a9f2872a7a0a8"
+            }
+          }
+        },
+        "id": "pi",
+        "license": "Apache-2.0",
+        "name": "Pi",
+        "repository": "https://github.com/merkr-software/CadencR",
+        "version": "0.4.1"
+      },
+      "host": {
+        "assets": {
+          "icon": "icon.svg",
+          "license": "LICENSE",
+          "readme": "README.md"
+        },
+        "compatibility": {
+          "min_app_version": "0.15.0"
+        },
+        "publisher": "cadencr"
+      }
+    }
+  },
+  "schema_version": 2,
+  "source": {
+    "commit": "40f1caf7fabc633f28bfd02b4088f913356fac07",
+    "repository": "https://github.com/merkr-software/CadencR",
+    "tag": "plugins/provider-pi/v0.4.1"
+  }
+}
