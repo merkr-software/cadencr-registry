@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "repository": "merkr-software/cadencr-registry",
+  "key_id": "cadencr-registry-1",
+  "discovery_branch": "marketplace-v2",
+  "generated_at": "2026-10-26T07:38:00Z",
+  "expires_at": "2026-11-08T07:38:00Z",
+  "previous_index": "bootstrap",
+  "public_key": "publication/public.pem",
+  "trust": {
+    "manifest": "publication/trust-manifest.json",
+    "root_public_key": "publication/root-public.pem",
+    "root_key_id": "cadencr-root-1",
+    "minimum_generation": 1
+  },
+  "publications": [
+    { "submission": "submissions/graphite-0.1.0.json" },
+    { "submission": "submissions/ember-0.1.0.json" },
+    { "submission": "submissions/fjord-0.1.0.json" },
+    { "submission": "submissions/pi-0.4.0.json" }
+  ]
+}
