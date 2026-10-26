@@ -46,7 +46,7 @@ not a formal GitHub review merge gate. Author releases are provenance, not
 registry-owned distribution or catalog publication. Protected mirroring, signing
 and discovery advancement require separate authorization.
 
-See the [public CLI contract](https://github.com/merkr-software/cadencr/blob/7bd611a0d10bfd161bb71f0f87ad693313b2c24f/packages/cli/README.md)
+See the [public CLI contract](https://github.com/merkr-software/cadencr/blob/07a41cbcacbcf7bdcfddb514313cbe9d146c101b/packages/cli/README.md)
 for complete limits, commands, confirmations and recovery semantics. For themes
 and custom tabs, use the kind-specific validation and packaging commands in
 [CONTRIBUTING.md](CONTRIBUTING.md); they do not implement the ACP provider runtime.

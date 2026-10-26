@@ -38,7 +38,7 @@ cadencr registry validate-submission /path/to/submission.json
 cadencr registry validate --base /path/to/base --candidate /path/to/candidate
 ```
 
-Use the [CLI contract](https://github.com/merkr-software/cadencr/blob/7bd611a0d10bfd161bb71f0f87ad693313b2c24f/packages/cli/README.md) for the exact kind-specific
+Use the [CLI contract](https://github.com/merkr-software/cadencr/blob/07a41cbcacbcf7bdcfddb514313cbe9d146c101b/packages/cli/README.md) for the exact kind-specific
 submission envelopes. Legacy providers use schema 1; mixed entries/submissions use
 explicit schema-2 kinds. The schemas in this registry are legacy provider-only references, not schema-2
 theme/tab contracts. Use the Rust CLI for the complete semantic policy. Maintainers separately check that the source tag resolves to the

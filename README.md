@@ -17,12 +17,12 @@ has no JavaScript business engine or npm installation step.
 | `ci/released-cli.env` | Reviewed released executable version, tag and SHA-256             |
 | `scripts/ci/`         | Trusted acquisition and CI process helpers                        |
 | `tests/fixtures/`     | Frozen historical compatibility data, not executable tests        |
-| `examples/workflows/` | Inactive publication design examples                              |
+| `.github/workflows/`  | Contribution CI and protected publication, renewal and watch jobs |
 
 Use the exact released executable selected by `ci/released-cli.env`:
-`0.14.2`. Verify the release checksum and exact version before
+`0.15.2`. Verify the release checksum and exact version before
 execution; do not substitute an unreviewed local build or a fallback runtime.
-See the [public CLI contract](https://github.com/merkr-software/cadencr/blob/7bd611a0d10bfd161bb71f0f87ad693313b2c24f/packages/cli/README.md).
+See the [public CLI contract](https://github.com/merkr-software/cadencr/blob/07a41cbcacbcf7bdcfddb514313cbe9d146c101b/packages/cli/README.md).
 
 ## Local metadata checks
 
@@ -49,10 +49,11 @@ writer to `main`. Candidate metadata is inert: CI obtains
 its helpers and released CLI pin from the trusted base and never executes a
 contributor archive. Maintainers separately review ownership and source provenance.
 
-Protected publication is a separate operator decision. Examples remain outside
-`.github/workflows/` and are not deployed publishers. They do not configure
-repository protections, grant credentials, activate a catalog, or prove hosted
-qualification. Never put private keys or credentials in this repository.
+Protected publication is a separate operator decision. The publication, policy
+bootstrap and renewal jobs run only from `main` in reviewed GitHub environments
+that hold the signing key, and stay inert until the repository variables in
+[operations](OPERATIONS.md) are set. Never put private keys or credentials in
+this repository.
 
 The legacy JSON schemas are provider-only reference contracts, not schema-2
 theme/tab schemas. Use the public CLI contract for all three kinds.
@@ -60,4 +61,5 @@ theme/tab schemas. Use the public CLI contract for all three kinds.
 Implementation and orchestration tests are authoritative in the Cadencr monorepo;
 this registry retains historical fixture data only, not a second test engine.
 See [authoring](AUTHORING.md), [contribution policy](CONTRIBUTING.md),
-[security](SECURITY.md), and the unchanged [source provenance](SOURCE_PROVENANCE.md).
+[security](SECURITY.md), [operations](OPERATIONS.md) and the
+[source provenance](SOURCE_PROVENANCE.md).
