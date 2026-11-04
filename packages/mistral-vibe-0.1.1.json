@@ -1,0 +1,37 @@
+{
+  "kind": "provider",
+  "package": {
+    "agent": {
+      "id": "mistral-vibe",
+      "name": "Mistral Vibe",
+      "version": "0.1.1",
+      "description": "Mistral Vibe coding agent, bridged to CadencR through its native ACP binary vibe-acp.",
+      "authors": [
+        "edjubert"
+      ],
+      "license": "Apache-2.0",
+      "repository": "https://github.com/edjubert/cadencr-plugin-provider-vibe",
+      "website": "https://mistral.ai/vibe",
+      "distribution": {
+        "binary": {
+          "darwin-aarch64": {
+            "archive": "https://github.com/edjubert/cadencr-plugin-provider-vibe/releases/download/v0.1.1/provider-mistral-vibe-0.1.1-darwin-aarch64.tar.gz",
+            "cmd": "bin/provider",
+            "sha256": "7c96a1940f9e3b02a8c4a9f9eb9b803a28d20423a26d8f2e3a5a111195645ba4"
+          }
+        }
+      }
+    },
+    "host": {
+      "publisher": "edjubert",
+      "compatibility": {
+        "min_app_version": "0.16.0"
+      },
+      "assets": {
+        "icon": "icon.svg",
+        "readme": "README.md",
+        "license": "LICENSE"
+      }
+    }
+  }
+}
