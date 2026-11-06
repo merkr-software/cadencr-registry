@@ -1,0 +1,54 @@
+{
+  "kind": "tab",
+  "package": {
+    "tab": {
+      "id": "review-nvim",
+      "name": "review.nvim",
+      "description": "Review GitLab merge requests and GitHub or Codeberg pull requests in an embedded Neovim session, with local comment drafts.",
+      "version": "0.1.5",
+      "repository": "https://github.com/edjubert/review.nvim",
+      "license": "MIT",
+      "api_version": 1,
+      "backend": {
+        "protocol": 1,
+        "reasoning": "Runs your installed Neovim in a pseudo-terminal with the bundled review.nvim plugin and your Neovim configuration. Git and authenticated glab/gh or curl access the review host; comments stay local until explicitly submitted in Neovim."
+      },
+      "distribution": {
+        "archive": "https://github.com/edjubert/review.nvim/releases/download/cadencr-v0.1.5/tab.tar.gz",
+        "sha256": "bc0973a1f66a92b5a7a63b08e37128f47671bd3379e1ce30725709f62705da6f",
+        "binary": {
+          "darwin-aarch64": {
+            "archive": "https://github.com/edjubert/review.nvim/releases/download/cadencr-v0.1.5/tab-backend-darwin-aarch64.tar.gz",
+            "sha256": "a22c55684cb3053d2edde2b11d5b3250e47525037ee36537761c8497967eb502",
+            "size": 2582872,
+            "cmd": "bin/darwin-aarch64/review-nvim",
+            "executable_sha256": "7ff814934c71f5d0de79a9a4d85c5ee1a0c2a67a04cf9434314a1c81c37d1390",
+            "executable_size": 4472432
+          },
+          "darwin-x86_64": {
+            "archive": "https://github.com/edjubert/review.nvim/releases/download/cadencr-v0.1.5/tab-backend-darwin-x86_64.tar.gz",
+            "sha256": "d3549c204e0611739cf3a38e620c6ff869124b57f9db80c59326366dab2cd6fc",
+            "size": 2761222,
+            "cmd": "bin/darwin-x86_64/review-nvim",
+            "executable_sha256": "f0bd7770aabfe855e40ac207e2cff9e256886969e6660d991e874db1d4153899",
+            "executable_size": 4706080
+          },
+          "linux-x86_64": {
+            "archive": "https://github.com/edjubert/review.nvim/releases/download/cadencr-v0.1.5/tab-backend-linux-x86_64.tar.gz",
+            "sha256": "81d272519f278f764336947cde06ea19fa1f606f797d429447ee831f22a589d0",
+            "size": 2774513,
+            "cmd": "bin/linux-x86_64/review-nvim",
+            "executable_sha256": "502fc6392190c2212f8beeeaf0c01d67a753bafa222ffab6cd42eff52e43c78a",
+            "executable_size": 4739209
+          }
+        }
+      }
+    },
+    "host": {
+      "publisher": "edjubert",
+      "compatibility": {
+        "min_app_version": "0.16.0"
+      }
+    }
+  }
+}
