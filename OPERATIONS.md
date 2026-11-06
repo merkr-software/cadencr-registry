@@ -4,6 +4,50 @@ Operational procedures for the protected publication, renewal and revocation
 workflows of this registry. Command syntax is in the
 [release configuration](https://github.com/merkr-software/cadencr/blob/main/docs/MARKETPLACE_RELEASE_CONFIG.md).
 
+## Administrative provider retirement and ownership transfer
+
+Use the explicit, signed, append-only handoff contract and delivery order in
+[Pi provider handoff](administration/PI_PROVIDER_HANDOFF.md). Retired package and
+submission files remain immutable historical evidence. Only the protected
+publication request may introduce retirement records into the live signed
+catalog; ordinary version contributions cannot change them. Namespace authority
+does not approve a replacement artifact, migrate sessions, or revoke an identity.
+
+The current CLI pin must be replaced by an actually released and qualified
+handoff-capable CLI, and compatible clients delivered, before this request can
+be published. The selector rejects an incapable CLI before materializing secrets.
+
+## Administrative catalog compatibility channel
+
+`marketplace-v2-admin` is a separate signed schema-2 catalog channel for clients
+that understand append-only provider handoff records. Keep old clients on their
+existing `marketplace-v2` catalog. Handoff-bearing payloads are rejected on the
+legacy channel before publication writes; no signature/continuity exception is
+introduced. Revocation policies retain their existing legacy URLs/domains.
+
+Before releasing clients pointed at the new channel, authenticate and archive the
+exact current legacy head/catalog, then create the new branch at that exact head.
+It must contain those same authenticated catalog bytes. A schema2-to-schema2 fork
+uses normal existing-baseline CAS; do not substitute an empty `bootstrap` request.
+Compatible clients use an independent `administrative-catalog.json` cache so a
+later legacy renewal cannot mask the retirement. Installed receipts and both
+catalog histories remain intact.
+
+The new `renew-administrative-catalog` workflow is inert until the public variable
+`CADENCR_REGISTRY_ADMINISTRATIVE_CATALOG_URL` names this registry's exact
+`refs/heads/marketplace-v2-admin/managed-index.json` URL. It renews and watches only
+that catalog with the existing protected renewal environment and shared
+`marketplace-publication` lane. Leave legacy renewal/policy variables unchanged.
+Its default-branch gate compares the full `github.ref`, excluding same-named tags.
+
+A qualified released handoff-capable CLI must be pinned atomically by version,
+tag and digest before administrative activation. The selector checks capability
+without requiring a manual root request. Protected manual publication confirms
+that the authenticated baseline history plus the request delta equals the
+reviewed root records. Legacy publication ignores unrelated root administrative
+history but refuses handoffs in its own baseline/delta. Renewals preserve records
+from their authenticated channel baseline and cannot add a handoff.
+
 ## Automatic catalog and policy renewal and expiry watch
 
 These workflows automate the routine part of the renewal runbook below. They

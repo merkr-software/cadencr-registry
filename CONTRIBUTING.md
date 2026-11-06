@@ -70,6 +70,11 @@ checks continuity against the authenticated prior signed catalog.
 - A normal version PR cannot silently transfer publisher/source ownership.
   Transfers need a separate explicit administrative procedure and independent
   evidence; there is no ordinary contribution bypass.
+  The [administrative handoff contract](administration/PI_PROVIDER_HANDOFF.md)
+  preserves all accepted files. `registry validate --administrative` is an
+  explicit operator review mode, never an automatic contribution retry or a
+  publication authorization. Once accepted in the trusted base,
+  `provider-handoffs.json` constrains future versions to the authorized successor.
 - Declare the required license/provenance and include the distributable license
   and documentation. Review dependencies, privileges, setup and all target bytes.
 - Acceptance is not a safety certificate or a promise of permanent listing.
