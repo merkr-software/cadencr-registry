@@ -1,1 +1,1 @@
-{"signature":{"algorithm":"ed25519","key_id":"cadencr-registry-1","value":"betzUvKy1G9nWWriqbMmjNoBh3zf+l9Avbq/lj6SO5HDweL1cJdQ5OW+Ctp2YJaqaCnZ1etIC+sAZieLd4CVBw=="},"signed":{"entries":[],"expires_at":"2026-11-14T11:57:48Z","generated_at":"2026-11-01T11:57:48Z","schema_version":1}}
+{"signature":{"algorithm":"ed25519","key_id":"cadencr-registry-1","value":"MMdNnVwLCSVx76JezG21px448J7dVOdYcBJstxBZrf/+rCYkuW9FiG89Zlw5MWp+lGpkLXQKGDB94FEqdv/hCw=="},"signed":{"entries":[],"expires_at":"2026-11-19T12:59:32Z","generated_at":"2026-11-06T12:59:33Z","schema_version":1}}
