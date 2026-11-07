@@ -27,14 +27,21 @@ Never silently substitute a newer baseline into this recorded operation.
 
 ## Signed contract and client behavior
 
-The current source integration is [CadencR PR #386](https://github.com/merkr-software/CadencR/pull/386),
-branch `feat/pi-retirement-forward-ws-20261107`, signed head
-`397858ada04bfb996a47af9eb0de61fc7722f5b1`. Its ordinary merge preserves parents
+The source integration is reviewed in [CadencR PR #386](https://github.com/merkr-software/CadencR/pull/386),
+branch `feat/pi-retirement-forward-ws-20261107`. Its signed forward merge
+`397858ada04bfb996a47af9eb0de61fc7722f5b1` preserves parents
 `53aa303cc77246c25aa595ad567e1d7e07b54aac` and reviewed main
 `da81a83a594554d89e00565fb93ce079f5a7c552`, with tree
 `f540285a7f1f1ea27729bcbae37bb34141317be9`. All three final PR #385 proxy files
 and all 25 LSP policy records retain main's exact bytes. First-party Pi source
 retirement is already integrated on main; it is not repeated or reintroduced.
+
+Signed follow-up `8f143b26f54e6c425bbd3c742362fe38edb1c9a0` corrects source-build
+CLI version capture in LSP QA. Source mode follows concordant committed CLI
+manifests; released mode still requires the reviewed `0.15.6` pin. No Rust code,
+runtime, pin, immutable tag or previous qualification proof changes. Its 27 harness
+tests and both normal scoped hooks pass. Read the PR's actual current head/checks
+and the eventual integrated main tip before any release; do not infer a future SHA.
 
 The original signed Pi chain remains in `feat/pi-retirement-signed-handoff`,
 based on `ebd19991470b15aff76ea61bfed0f39e8318bb60`. Its worktree, the preview,
