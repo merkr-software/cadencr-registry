@@ -70,7 +70,7 @@ checks continuity against the authenticated prior signed catalog.
 - A normal version PR cannot silently transfer publisher/source ownership.
   Transfers need a separate explicit administrative procedure and independent
   evidence; there is no ordinary contribution bypass.
-  The [administrative handoff contract](administration/PI_PROVIDER_HANDOFF.md)
+  The [administrative handoff procedure](OPERATIONS.md#administrative-provider-retirement-and-ownership-transfer)
   preserves all accepted files. `registry validate --administrative` is an
   explicit operator review mode, never an automatic contribution retry or a
   publication authorization. Once accepted in the trusted base,

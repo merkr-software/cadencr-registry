@@ -6,16 +6,26 @@ workflows of this registry. Command syntax is in the
 
 ## Administrative provider retirement and ownership transfer
 
-Use the explicit, signed, append-only handoff contract and delivery order in
-[Pi provider handoff](administration/PI_PROVIDER_HANDOFF.md). Retired package and
-submission files remain immutable historical evidence. Only the protected
-publication request may introduce retirement records into the live signed
-catalog; ordinary version contributions cannot change them. Namespace authority
-does not approve a replacement artifact, migrate sessions, or revoke an identity.
+Administrative retirement uses explicit, signed, append-only handoff records.
+Each record binds every retired version to its original owner/source and canonical
+mirrored-entry digest. Retired package and submission files remain immutable
+historical evidence. Only a reviewed protected publication request may introduce
+records into the live signed catalog; ordinary version contributions cannot change
+them. Namespace authority does not approve a replacement artifact, migrate sessions,
+or revoke an identity.
 
 The current CLI pin must be replaced by an actually released and qualified
-handoff-capable CLI, and compatible clients delivered, before this request can
+handoff-capable CLI, and compatible clients delivered, before a handoff request can
 be published. The selector rejects an incapable CLI before materializing secrets.
+The infrastructure is safe to review independently: absent administrative records
+and opt-in configuration, existing catalog and policy operations stay on legacy.
+
+Pi's operation is tracked in [issue #23](https://github.com/merkr-software/cadencr-registry/issues/23).
+Its [separate retirement-only PR #29](https://github.com/merkr-software/cadencr-registry/pull/29)
+contains the owner record, captured baseline and prepared request. The compatible
+implementation is reviewed in [CadencR PR #386](https://github.com/merkr-software/CadencR/pull/386).
+Neither PR creation nor infrastructure integration publishes retirement. The
+delivery order below applies before any administrative activation.
 
 ## Administrative catalog compatibility channel
 
