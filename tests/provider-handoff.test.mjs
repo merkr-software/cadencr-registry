@@ -34,21 +34,6 @@ test("retirement request is separate from successor admission and binds exact hi
   }
 });
 
-test("staged successor metadata matches the immutable release evidence", () => {
-  const folder = "administration/candidates/pi-0.5.0";
-  const package_ = read(`${folder}/package.json`);
-  assert.deepEqual(read(`${folder}/submission.json`).package, package_);
-  assert.equal(package_.agent.id, "pi");
-  assert.equal(package_.agent.name, "Pi");
-  assert.equal(package_.host.publisher, "edjubert");
-  assert.equal(read(`${folder}/release-evidence.json`).immutable, true);
-  for (const name of ["package.json", "submission.json", "native-qa.json"]) {
-    const bytes = readFileSync(new URL(`../${folder}/${name}`, import.meta.url));
-    const asset = read(`${folder}/release-evidence.json`).assets.find((asset) => asset.name === name);
-    assert.equal(`sha256:${createHash("sha256").update(bytes).digest("hex")}`, asset.digest);
-  }
-});
-
 test("captured baseline authenticates with the pinned public key through the Rust CLI", {
   skip: !process.env.CADENCR_TEST_CLI && "Set CADENCR_TEST_CLI to a trusted handoff-capable Rust CLI",
 }, () => {

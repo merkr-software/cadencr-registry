@@ -1,222 +1,37 @@
-# Pi retirement and namespace handoff
+# Pi retirement and ownership handoff
 
-## Decision and exact operation
-
-The [maintainer authorization](https://github.com/merkr-software/cadencr-registry/pull/22#issuecomment-6630319571)
+Retire first-party Pi `0.4.0` and `0.4.1`. The [maintainer authorization](https://github.com/merkr-software/cadencr-registry/pull/22#issuecomment-6630319571)
 assigns provider ID `pi`, display name **Pi**, publisher `edjubert`, and repository
 `https://github.com/edjubert/cadencr-plugin-provider-pi` to the independent owner.
-[Issue #23](https://github.com/merkr-software/cadencr-registry/issues/23) tracks delivery.
+Replacement package admission is a separate review.
 
-`publication-request.json` is a **retirement-only** operation: `publications: []`.
-`provider-handoffs.json` binds every retired version to its exact old owner and
-canonical mirrored entry digest. Historical accepted files, signatures, releases,
-archives, receipts, installations and conversations are retained. No database is
-changed by this implementation. No blanket `pi` revocation or session migration
-is performed. Namespace authorization does not admit a replacement artifact.
+## Operation
 
-Prepared request SHA-256:
-`9ccfed68700f1e90de4789500334874aee885105326dbf8d685e377b535e9b3d`.
-This is a reviewable preparation, **not a deployed publication**. Refresh the live
-baseline/window before publication and obtain confirmation of its new exact hash.
-Never silently substitute a newer baseline into this recorded operation.
+- [`provider-handoffs.json`](../provider-handoffs.json) binds the retired versions
+  to their original owner/source and canonical entry digests.
+- [`publication-request.json`](../publication-request.json) has `publications: []`:
+  it retires listings without admitting a replacement package.
+- [`pi-baseline.json`](pi-baseline.json) is the signed baseline input. Refresh it
+  and the request window against authenticated live discovery before publication.
 
-| Version | Retired canonical schema-2 mirrored entry SHA-256 |
-| --- | --- |
-| `0.4.0` | `8f434a4793ac955b4d76c49f8b36627a56154a60e31fc615f2f620d789a71add` |
-| `0.4.1` | `efd43c79b5380cbc5ea2a934087a273089568edaa11e52ed80881cb187beb8b2` |
+Accepted packages, submissions, assets and signed history remain immutable.
+Installed receipts and conversations are retained; no session migration or
+blanket identity revocation is part of this operation.
 
-## Signed contract and client behavior
+## Publication order
 
-The source integration is reviewed in [CadencR PR #386](https://github.com/merkr-software/CadencR/pull/386),
-branch `feat/pi-retirement-forward-ws-20261107`. Its signed forward merge
-`397858ada04bfb996a47af9eb0de61fc7722f5b1` preserves parents
-`53aa303cc77246c25aa595ad567e1d7e07b54aac` and reviewed main
-`da81a83a594554d89e00565fb93ce079f5a7c552`, with tree
-`f540285a7f1f1ea27729bcbae37bb34141317be9`. All three final PR #385 proxy files
-and all 25 LSP policy records retain main's exact bytes. First-party Pi source
-retirement is already integrated on main; it is not repeated or reintroduced.
+1. Qualify a released handoff-capable CLI and promote its version/tag/digest pin.
+   Authenticate the legacy head and seed `marketplace-v2-admin` with those exact
+   bytes before delivering compatible clients. Keep legacy catalog/policy URLs;
+   never publish handoffs on `marketplace-v2` or substitute an empty bootstrap.
+2. Review the refreshed baseline and request, then validate with the qualified
+   CLI's explicit `--administrative` mode. Ordinary contribution validation must
+   reject a new handoff even with a capable CLI; owner review remains required.
+3. Publish through the protected workflow using the exact reviewed commit and
+   request digest, with human environment approval.
+4. Independently verify public signatures, continuity and retired digests; confirm
+   compatible clients hide/refuse the retired versions while installed state and
+   the legacy feed remain intact. Enable administrative renewal separately.
 
-Signed follow-up `8f143b26f54e6c425bbd3c742362fe38edb1c9a0` corrects source-build
-CLI version capture in LSP QA. Source mode follows concordant committed CLI
-manifests; released mode still requires the reviewed `0.15.6` pin. No Rust code,
-runtime, pin, immutable tag or previous qualification proof changes. Its 27 harness
-tests and both normal scoped hooks pass. Read the PR's actual current head/checks
-and the eventual integrated main tip before any release; do not infer a future SHA.
-
-The original signed Pi chain remains in `feat/pi-retirement-signed-handoff`,
-based on `ebd19991470b15aff76ea61bfed0f39e8318bb60`. Its worktree, the preview,
-the original retirement checkout at `229d9c59f` and all databases are preserved.
-`COMMIT_PLAN.json` records the earlier approved local plan, not a current remote
-execution instruction.
-
-- Strict schema-2 `provider_handoffs` are append-only, bound to every previous
-  version's owner/source/digest. Entries remain unchanged. A successor must use
-  the authorized publisher/repository and a version above all retired versions.
-  One handoff per provider is supported; plugin identities cannot use it.
-- Normal contribution validation rejects administrative changes and all historical
-  package/submission removal or mutation. Explicit `--administrative` validates
-  the operator record; it does not authorize publication or admit an artifact.
-- The existing authenticated baseline, trust, canonical signing, immutable release,
-  conditional discovery update and public read-back remain mandatory. Renewals
-  preserve signed records without redownloading historical archives.
-- The service authenticates and retains the entire original envelope; only the
-  active provider projection hides retired versions. Desktop filtering preserves
-  the exact envelope used for installation. Retired new installations fail.
-- Ownership changes are rejected before archive download/probe and checked again
-  under the activation lock. Existing installations continue with their own
-  immutable receipt; switching implementations requires explicit removal and a
-  separately admitted installation.
-- Newly persisted successor sessions carry a host-owned publisher/source binding,
-  including the first runtime event and terminal resume commands. Raw first-party
-  IDs and foreign-owner IDs fail visibly with `MANAGED_SESSION_OWNER_CHANGED`.
-  Messages/native files remain intact. Non-transferred providers keep legacy IDs.
-
-## Compatible rollout and channels
-
-Older clients reject the new signed field. Do not send it to their feed.
-
-| Consumer | Catalog channel | Cache and result |
-| --- | --- | --- |
-| Existing releases | `marketplace-v2` | Existing signed contract/cache, still lists historical Pi until client update |
-| Delivered compatible release | `marketplace-v2-admin` | Independent `administrative-catalog.json` high-water/cache; retired Pi hidden |
-| Revocation policies | Existing `marketplace-v2` policy URLs | Existing signed domains and independent policy high-water checks |
-
-A legacy renewal may have a timestamp later than the first administrative
-publication. Compatible clients never reuse that legacy cache as administrative
-high-water or fallback. Both histories are retained, and rollback/equivocation
-remain forbidden within each channel. A signed channel failure is visible;
-there is no fallback to an unsigned or legacy Pi listing.
-
-`renew-administrative-catalog.yml` renews/watches only the administrative catalog.
-Its opt-in variable is `CADENCR_REGISTRY_ADMINISTRATIVE_CATALOG_URL`, exactly this
-repository's `marketplace-v2-admin/managed-index.json`. Legacy renewal/policy
-configuration remains unchanged. Both use the existing protected environment,
-qualified CLI, shared publication concurrency lane and exact default-branch ref.
-The runtime selector tests capability only; protected manual publication checks
-that authenticated-baseline history plus the request delta equals reviewed
-administrative history. A later request's delta need not repeat earlier records.
-
-## Current independent candidate
-
-Refreshed on **2026-11-06**:
-
-| Item | Verified evidence |
-| --- | --- |
-| PR #22 actual head | `a1f2aa6684ba4be0ccb7bdb962b2a385b2ee84d7`; still submits `pidancr 0.2.0` |
-| New public release | [Pi v0.5.0](https://github.com/edjubert/cadencr-plugin-provider-pi/releases/tag/v0.5.0), GitHub `immutable: true` |
-| Signed annotated tag | `d1ed046dd0393e40941b120b76856eece3050376`, GitHub signature verified |
-| Exact source | `f10dd1298eb081e50505d33bc6674e21bd4f0dd2` |
-| Author CI | [41878515853](https://github.com/edjubert/cadencr-plugin-provider-pi/actions/runs/41878515853), successful for that source |
-| Public assets | All eight downloaded independently; sizes and GitHub asset digests matched |
-| Package/submission | Identical package body; `pi` / **Pi** / `0.5.0` / `edjubert`; all four archive hashes match |
-| Static archives | No absolute/traversal paths, duplicate entries, links, special files or setuid/setgid bits |
-| Executables and source documents | All four executable digests match native reports; ELF/Mach-O architectures match targets; archived README/license/notices/icon match the exact source |
-| Native evidence | Author reports all four targets, Pi `1.5.0`, ACP lifecycle/resume/isolation and concurrent permission routing |
-
-Exact inert candidate metadata, native report and release asset evidence are
-under `administration/candidates/pi-0.5.0/`, outside accepted `packages/` and
-`submissions/`. They are staged for review, **not admitted or published**.
-
-Admission remains pending independent maintainer review, summarized in
-[`candidates/pi-0.5.0/ADMISSION_REVIEW.md`](candidates/pi-0.5.0/ADMISSION_REVIEW.md).
-Independent RustSec and npm audits passed. Author runtime evidence remains
-attributed; native execution is suspended after an automatic approval rejection.
-The independent candidate is not required to publish our retirement.
-
-## Delivery and protected publication procedure
-
-1. Finish review/QA, approve the concrete commit structure, integrate source
-   retirement and shared code. Preserve LSP qualification and release controls.
-2. Release the prepared handoff-capable CLI through `.agents/skills/release/SKILL.md`:
-   `0.15.7` is approved and committed locally in the source PR, not released or
-   distributed-qualified. Existing qualified `0.15.6` is immutable and cannot acquire
-   this code. Its actual triplet is version `0.15.6`, tag `cli/v0.15.6`, SHA-256
-   `0d95aec0e56f1957d7e928226208fb2d987666b0713678e66ef5798a5ec16623`.
-   Do not fabricate the next digest. Qualify the actual released binary, then
-   atomically update all three values in `ci/released-cli.env`. The registry's
-   current `0.15.4` pin remains unchanged until that real artifact exists. Do not
-   land administrative activation with an incapable pin and break renewals.
-3. Build and qualify a separately reviewed compatible desktop release on macOS
-   and Linux; no application version or release is authorized here. Compile its catalog URL to the
-   administrative channel; retain legacy policy URLs. Verify packaged behavior,
-   preserved installs/conversations, explicit owner mismatch and cache isolation.
-4. Authenticate current legacy discovery and retain exact bytes, branch commit,
-   trust generation and digests. Refresh the retirement baseline/request/window
-   if necessary as a new reviewed operation. Revalidate historical entry digests.
-5. **Seed the administrative branch with the exact authenticated legacy head**
-   containing that same baseline, before switching clients to it. This is a
-   reviewed new-ref creation, not an empty-catalog bootstrap. Schema2-to-schema2
-   publication has `discovery_bootstrap: false` and requires an existing matching
-   discovery head. Do not pass `previous_index: "bootstrap"` to evade continuity.
-   The initial copied catalog has no handoff field and is consumable by the
-   compatible release while the signed retirement waits for protection approval.
-   Deliver the reviewed compatible clients only after that seed is authenticated
-   publicly; verify both legacy and compatible feeds before signing retirement.
-6. Validate with the actually qualified CLI:
-
-   ```sh
-   cadencr registry validate --base /path/to/accepted --candidate . --administrative
-   CADENCR_TEST_CLI=/path/to/qualified/cadencr node --test tests/*.test.mjs
-   ```
-
-   Ordinary contribution jobs never select administrative mode. Independent owner
-   review remains required for accepting the administrative record into the base.
-7. Present the exact registry commit, new request SHA-256, baseline/hash/head,
-   signing-key/trust profile, actual CLI triplet, client versions/digests, platform
-   QA and CI evidence. Dispatch `publish-protected-catalog` on canonical `main`
-   with `confirm-request-sha256` only for that operation. A human approves
-   `protected-marketplace-publisher`; the agent never self-approves deployments.
-8. Independently fetch public bytes without credentials, verify signatures/trust,
-   append-only continuity, exact retired digests and retained catalog entries.
-   Confirm compatible marketplace hides `0.4.0`/`0.4.1` and refuses installation,
-   existing installs/conversations survive, and legacy feed still authenticates.
-   Record immutable publication receipts and public read-back digest.
-9. Activate the separate administrative renewal/watch variable and exercise both
-   legacy and administrative renewal/watch with the qualified released CLI.
-   Do not declare retirement deployed before public/client verification passes.
-10. Replacement admission is a **new** exact candidate decision/request, only after
-    resolving source findings, fresh review, required platform QA and owner
-    acceptance. Inert candidate evidence here is outside accepted directories.
-
-## Verification evidence and remaining release gates
-
-Fresh 2026-11-07 macOS verification on source head `397858ada…` passed all ten
-normal hooks, including Rust formatting, Clippy, full workspace unit/integration/
-doc tests, frontend format/lint/types/knip, desktop and landing tests. Core passed
-170, publisher 222 and service 4,308 tests (3 ignored), including the seven final
-WS network tests. The registry template suite passed 98 tests. The registry suite
-passed 7 tests, including baseline signature verification with our local CLI.
-Ordinary contribution validation rejected the new handoff; explicit administrative
-validation accepted it. These development checks do not qualify a released binary.
-
-The original full-hook attempt failed in a publisher timeout fixture. The exact
-same binary subsequently passed one isolated diagnostic; this does not establish
-flakiness or a root cause. The reviewed test-only correction explicitly sets the
-accepted socket blocking and prints unexpected errors, preserving production code
-and all existing test deadlines/assertions. The successful retry is distinct evidence.
-Its hook log SHA-256 is
-`ad3d0fad165b3c70acdac405531a847a486d08a53cc74bcb32b42d963985386e`.
-Source PR CI and actual main-tip checks remain required before release.
-
-Historical 2026-11-06 macOS execution on the earlier isolated integration passed
-core 170, publisher 222 and CLI 110 tests; the full service suite passed 4,298 tests
-with 3 ignored after the final historical-membership guard. Managed suites passed
-239 tests with 2 ignored, and the first-event persistence regression passed. Tools and
-service Clippy passed. The full registry-template suite passed 98 tests, including protected publication,
-renewal/watch, delta-history binding and legacy-channel coexistence.
-Registry administrative validation and tests use the freshly built local CLI for
-development verification, never as a production release pin.
-
-Desktop checks passed 86 tests plus TypeScript, lint and knip. Live fixture API
-checks authenticated the signed retirement and refused both retired installations.
-Five targeted development UI cases subsequently passed on macOS 27.0.1 ARM64
-through native CUA Chrome: before/after visibility, stale-action refusal, direct
-link refusal, signature failure and signed recovery. Authentic captures and the
-41-file manifest are recorded in the companion QA report. Earlier temporary
-capture/log directories are no longer available; their full original
-evidence set has not been reconstructed. No replacement manifest is represented
-as that original. Packaged macOS/Linux
-and installed-session lifecycle remain unqualified by that browser campaign. Source review/delivery evidence is
-`docs/qa/PI_RETIREMENT_DELIVERY_2026_11_06.md` in the companion worktree. Linux-native
-CI, compatible packaged releases, qualified CLI delivery and protected/public
-publication are still pending. Passing local checks do not imply deployment.
+See [registry operations](../OPERATIONS.md#administrative-provider-retirement-and-ownership-transfer)
+for the protected workflow and channel configuration.
