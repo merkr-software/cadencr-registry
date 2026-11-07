@@ -23,9 +23,15 @@ Existing reusable harness boundaries inspected at that exact QA commit:
 
 ## Version and immutable-profile gate
 
-Proposed next version: **0.15.7**, not reserved or approved. Release skill T2
-confirmation must precede the bump. Recheck version/tag availability when approved.
-Do not create fake public pins, source hashes, run IDs or finalized profiles.
+Prepared next version: **0.15.7**, explicitly approved for the local bump and
+committed in signed source `53aa303cc77246c25aa595ad567e1d7e07b54aac`.
+[CadencR PR #386](https://github.com/merkr-software/CadencR/pull/386) preserves it in
+forward merge `397858ada04bfb996a47af9eb0de61fc7722f5b1`, based on reviewed main
+`da81a83a594554d89e00565fb93ce079f5a7c552`. The release helper reports ready and
+unreleased; no remote `cli/v0.15.7` tag existed at the 2026-11-07 check.
+Recheck availability before the actual release. No release, distributed artifact,
+qualification or production pin is implied by this preparation. Do not fabricate
+future public digests, integrated main SHAs, run IDs or finalized profiles.
 
 After the approved release exists, create a **new** isolated profile/request/proof
 namespace (for example `cli0157` only if that exact version is approved). Preserve
@@ -68,12 +74,21 @@ and a local development CLI do not qualify the distributed ELF or packaged app.
 
 ## Coordination and authority
 
-The active serial LSP publication series owns exact main/workflows and global
-publication lanes. Until its explicit completion signal, make no main merge,
-remote pin/policy/workflow change or competing author dispatch. Preparation here
-is local/read-only and does not modify the QA repository or existing profiles.
-No private signing key, publication token or finalized next-release profile is
-present in this preparation.
+The serial LSP publication series completed all 24 new packages (96 assets),
+and the operator explicitly lifted its main/pin/publication-lane freeze. With
+the existing TypeScript package, its retained inventory covers 25 packages and
+100 assets; its SHA-256 is
+`9ac42513f70c3df286cab54c8d6b749b9a6d0df293535ec99273e8cf0d6b219a`.
+Those immutable `lsp-*-v0.1.0` tags remain bound to
+`ebd19991470b15aff76ea61bfed0f39e8318bb60`; never retag or republish them.
+
+PR #385 subsequently integrated the final WS fix on main `da81a83a…`.
+The Pi forward merge retains its three proxy files byte-for-byte and passes all
+seven final WS network tests in its complete macOS hook run. Main-tip CI and
+distributed CLI qualification remain separate checks; prior LSP evidence does
+not qualify this new binary. No app release/version is authorized or reserved.
+This preparation does not modify existing QA profiles or proof inventories, and
+contains no private signing key, publication token or finalized release profile.
 
 The release requires the exact reviewed source on green canonical main, passing
 release dry run, release T6 explicit go and a human approval of `cli-release`.

@@ -27,13 +27,20 @@ Never silently substitute a newer baseline into this recorded operation.
 
 ## Signed contract and client behavior
 
-The canonical isolated source integration is
-`/private/tmp/cadencr-pi-retirement-canonical-20261106`, branch
-`feat/pi-retirement-signed-handoff`, based on exact current main
-`ebd19991470b15aff76ea61bfed0f39e8318bb60`. It preserves PR #381 and all 25 LSP
-policy entries. The earlier development worktree on `d2b4023a...` and the original
-retirement checkout at `229d9c59f` are retained. The exact retirement patch was
-included without touching the original checkout/database.
+The current source integration is [CadencR PR #386](https://github.com/merkr-software/CadencR/pull/386),
+branch `feat/pi-retirement-forward-ws-20261107`, signed head
+`397858ada04bfb996a47af9eb0de61fc7722f5b1`. Its ordinary merge preserves parents
+`53aa303cc77246c25aa595ad567e1d7e07b54aac` and reviewed main
+`da81a83a594554d89e00565fb93ce079f5a7c552`, with tree
+`f540285a7f1f1ea27729bcbae37bb34141317be9`. All three final PR #385 proxy files
+and all 25 LSP policy records retain main's exact bytes. First-party Pi source
+retirement is already integrated on main; it is not repeated or reintroduced.
+
+The original signed Pi chain remains in `feat/pi-retirement-signed-handoff`,
+based on `ebd19991470b15aff76ea61bfed0f39e8318bb60`. Its worktree, the preview,
+the original retirement checkout at `229d9c59f` and all databases are preserved.
+`COMMIT_PLAN.json` records the earlier approved local plan, not a current remote
+execution instruction.
 
 - Strict schema-2 `provider_handoffs` are append-only, bound to every previous
   version's owner/source/digest. Entries remain unchanged. A successor must use
@@ -113,16 +120,17 @@ The independent candidate is not required to publish our retirement.
 
 1. Finish review/QA, approve the concrete commit structure, integrate source
    retirement and shared code. Preserve LSP qualification and release controls.
-2. Release the next handoff-capable CLI through `.agents/skills/release/SKILL.md`:
-   proposed `0.15.7`. Existing qualified `0.15.6` is immutable and cannot acquire
+2. Release the prepared handoff-capable CLI through `.agents/skills/release/SKILL.md`:
+   `0.15.7` is approved and committed locally in the source PR, not released or
+   distributed-qualified. Existing qualified `0.15.6` is immutable and cannot acquire
    this code. Its actual triplet is version `0.15.6`, tag `cli/v0.15.6`, SHA-256
    `0d95aec0e56f1957d7e928226208fb2d987666b0713678e66ef5798a5ec16623`.
    Do not fabricate the next digest. Qualify the actual released binary, then
    atomically update all three values in `ci/released-cli.env`. The registry's
    current `0.15.4` pin remains unchanged until that real artifact exists. Do not
    land administrative activation with an incapable pin and break renewals.
-3. Build and qualify a compatible desktop release on macOS and Linux, coordinated
-   with the proposed application `0.16.1` release. Compile its catalog URL to the
+3. Build and qualify a separately reviewed compatible desktop release on macOS
+   and Linux; no application version or release is authorized here. Compile its catalog URL to the
    administrative channel; retain legacy policy URLs. Verify packaged behavior,
    preserved installs/conversations, explicit owner mismatch and cache isolation.
 4. Authenticate current legacy discovery and retain exact bytes, branch commit,
@@ -165,7 +173,25 @@ The independent candidate is not required to publish our retirement.
 
 ## Verification evidence and remaining release gates
 
-All current local execution is macOS. The latest isolated integration passed
+Fresh 2026-11-07 macOS verification on source head `397858ada…` passed all ten
+normal hooks, including Rust formatting, Clippy, full workspace unit/integration/
+doc tests, frontend format/lint/types/knip, desktop and landing tests. Core passed
+170, publisher 222 and service 4,308 tests (3 ignored), including the seven final
+WS network tests. The registry template suite passed 98 tests. The registry suite
+passed 7 tests, including baseline signature verification with our local CLI.
+Ordinary contribution validation rejected the new handoff; explicit administrative
+validation accepted it. These development checks do not qualify a released binary.
+
+The original full-hook attempt failed in a publisher timeout fixture. The exact
+same binary subsequently passed one isolated diagnostic; this does not establish
+flakiness or a root cause. The reviewed test-only correction explicitly sets the
+accepted socket blocking and prints unexpected errors, preserving production code
+and all existing test deadlines/assertions. The successful retry is distinct evidence.
+Its hook log SHA-256 is
+`ad3d0fad165b3c70acdac405531a847a486d08a53cc74bcb32b42d963985386e`.
+Source PR CI and actual main-tip checks remain required before release.
+
+Historical 2026-11-06 macOS execution on the earlier isolated integration passed
 core 170, publisher 222 and CLI 110 tests; the full service suite passed 4,298 tests
 with 3 ignored after the final historical-membership guard. Managed suites passed
 239 tests with 2 ignored, and the first-event persistence regression passed. Tools and
@@ -179,7 +205,10 @@ checks authenticated the signed retirement and refused both retired installation
 Five targeted development UI cases subsequently passed on macOS 27.0.1 ARM64
 through native CUA Chrome: before/after visibility, stale-action refusal, direct
 link refusal, signature failure and signed recovery. Authentic captures and the
-41-file manifest are retained in the companion QA report. Packaged macOS/Linux
+41-file manifest are recorded in the companion QA report. Earlier temporary
+capture/log directories are no longer available; their full original
+evidence set has not been reconstructed. No replacement manifest is represented
+as that original. Packaged macOS/Linux
 and installed-session lifecycle remain unqualified by that browser campaign. Source review/delivery evidence is
 `docs/qa/PI_RETIREMENT_DELIVERY_2026_11_06.md` in the companion worktree. Linux-native
 CI, compatible packaged releases, qualified CLI delivery and protected/public
