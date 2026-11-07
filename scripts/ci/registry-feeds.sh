@@ -29,6 +29,10 @@ WINDOW_DAYS=13
 # The revocation policy feeds as kind:URL variable:file on the discovery
 # branch, in this order. The catalog is managed-index.json.
 POLICY_FEEDS="provider:CADENCR_REGISTRY_PROVIDER_BLOCKLIST_URL:managed-blocklist.json theme:CADENCR_REGISTRY_THEME_BLOCKLIST_URL:managed-theme-blocklist.json tab:CADENCR_REGISTRY_TAB_BLOCKLIST_URL:managed-tab-blocklist.json"
+# LSP is opt-in until the independent signed policy is deployed.
+if [ -n "${CADENCR_REGISTRY_LSP_BLOCKLIST_URL:-}" ]; then
+  POLICY_FEEDS="$POLICY_FEEDS lsp:CADENCR_REGISTRY_LSP_BLOCKLIST_URL:managed-lsp-blocklist.json"
+fi
 CATALOG_FILE=managed-index.json
 export RENEW_WITHIN_HOURS WINDOW_DAYS POLICY_FEEDS CATALOG_FILE
 
@@ -121,9 +125,13 @@ gate)
     renewal|watch) ;;
     *) fail "unknown gate purpose: $purpose" ;;
   esac
-  # Both purposes need every feed plus the pinned key.
+  scope=${3:-all}
+  case "$scope" in catalog|all) ;; *) fail "unknown gate scope: $scope" ;; esac
+  # Catalog-only channels share the independently renewed policy feeds.
   required="CADENCR_REGISTRY_CATALOG_URL"
-  for feed in $POLICY_FEEDS; do split_feed "$feed"; required="$required $var"; done
+  if [ "$scope" = all ]; then
+    for feed in $POLICY_FEEDS; do split_feed "$feed"; required="$required $var"; done
+  fi
   required="$required CADENCR_REGISTRY_KEY_ID CADENCR_REGISTRY_PUBLIC_KEY_PEM"
   if ! have CADENCR_REGISTRY_CATALOG_URL; then
     echo "::notice title=Registry $purpose is not configured::CADENCR_REGISTRY_CATALOG_URL is unset, so this job is inert. Set the repository variables listed in OPERATIONS.md to activate it."
@@ -139,6 +147,13 @@ gate)
     ! have "$name" || trust=$((trust + 1))
   done
   [ "$trust" -eq 0 ] || [ "$trust" -eq 3 ] || fail "trust manifest, root key id and root public key must be configured together"
+  if [ "$scope" = catalog ]; then
+    node_script <<'NODE'
+    const match = feedUrl(process.env.CADENCR_REGISTRY_CATALOG_URL, CATALOG_FILE);
+    if (!match || match[1].toLowerCase() !== process.env.GITHUB_REPOSITORY.toLowerCase()
+      || match[2] !== "marketplace-v2-admin") throw new Error("catalog-only automation requires this registry's marketplace-v2-admin feed");
+NODE
+  fi
   echo "configured=true" >> "$GITHUB_OUTPUT"
   ;;
 
@@ -188,7 +203,8 @@ prepare)
   if (!signed || typeof signed !== "object") fail("downloaded catalog has no signed payload");
   const schema = signed.schema_version;
   if (schema !== 1 && schema !== 2) fail("downloaded catalog has an unsupported schema version");
-  if ((schema === 2) !== (branch === "marketplace-v2")) fail("catalog schema does not match its discovery branch");
+  if ((schema === 2) !== ["marketplace-v2", "marketplace-v2-admin"].includes(branch)) fail("catalog schema does not match its discovery branch");
+  if (signed.provider_handoffs && branch !== "marketplace-v2-admin") fail("administrative catalog cannot renew on the legacy channel");
   if (![signed.generated_at, signed.expires_at].every((v) => TIMESTAMP.test(v ?? ""))) {
     fail("downloaded catalog has non-canonical timestamps");
   }
@@ -574,6 +590,8 @@ NODE
 
 check-expiry)
   dir=${2:?snapshot directory is required}
+  scope=${3:-all}
+  case "$scope" in catalog|all) ;; *) fail "unknown expiry scope: $scope" ;; esac
   : "${VERIFIED_CLI:?VERIFIED_CLI is required}"
   : "${KEY_DIR:?KEY_DIR is required}"
   status=0
@@ -583,7 +601,9 @@ check-expiry)
   printf '%s\n' "$CADENCR_REGISTRY_PUBLIC_KEY_PEM" > "$KEY_DIR/public.pem"
   # Timestamp diagnostic: exit 1 at or below 72 hours, when expired or malformed.
   policy_files=
-  for feed in $POLICY_FEEDS; do split_feed "$feed"; policy_files="$policy_files $file"; done
+  if [ "$scope" = all ]; then
+    for feed in $POLICY_FEEDS; do split_feed "$feed"; policy_files="$policy_files $file"; done
+  fi
   for name in "$CATALOG_FILE" $policy_files; do
     echo "== expiry: $name"
     "$VERIFIED_CLI" registry check-metadata-expiry --warning-hours 72 "$dir/$name" \
@@ -592,7 +612,9 @@ check-expiry)
   # The timestamp diagnostic is unauthenticated, so also verify every feed's
   # signature and domain with the released CLI.
   pairs="verify-index:$CATALOG_FILE"
-  for feed in $POLICY_FEEDS; do split_feed "$feed"; pairs="$pairs verify-$kind-blocklist:$file"; done
+  if [ "$scope" = all ]; then
+    for feed in $POLICY_FEEDS; do split_feed "$feed"; pairs="$pairs verify-$kind-blocklist:$file"; done
+  fi
   for pair in $pairs; do
     command=${pair%%:*}; name=${pair#*:}
     echo "== signature: $name"
