@@ -1,0 +1,86 @@
+{
+  "schema_version": 2,
+  "package": {
+    "kind": "lsp",
+    "package": {
+      "host": {
+        "compatibility": {
+          "min_app_version": "0.16.1"
+        },
+        "publisher": "merkr-software"
+      },
+      "lsp": {
+        "args": [
+          "--stdio"
+        ],
+        "description": "Pyright using pinned complete upstream npm distributions.",
+        "distribution": {
+          "binary": {
+            "darwin-aarch64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/lsp-pyright-v0.1.0/lsp-pyright-0.1.0-darwin-aarch64.tar.gz",
+              "entry": "node_modules/pyright/langserver.index.js",
+              "entry_sha256": "f200762078eb9880faf421a5b30f9ef3055b1d85c6f10780d75db4da8d8499f1",
+              "entry_size": 229,
+              "node_min_version": "20.0.0",
+              "runtime": "node",
+              "sha256": "764e4969792b5ddc0bb3fbdb552e6b05b5d10fea0083677404a027b570cf8b65",
+              "size": 3936551
+            },
+            "darwin-x86_64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/lsp-pyright-v0.1.0/lsp-pyright-0.1.0-darwin-x86_64.tar.gz",
+              "entry": "node_modules/pyright/langserver.index.js",
+              "entry_sha256": "f200762078eb9880faf421a5b30f9ef3055b1d85c6f10780d75db4da8d8499f1",
+              "entry_size": 229,
+              "node_min_version": "20.0.0",
+              "runtime": "node",
+              "sha256": "764e4969792b5ddc0bb3fbdb552e6b05b5d10fea0083677404a027b570cf8b65",
+              "size": 3936551
+            },
+            "linux-x86_64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/lsp-pyright-v0.1.0/lsp-pyright-0.1.0-linux-x86_64.tar.gz",
+              "entry": "node_modules/pyright/langserver.index.js",
+              "entry_sha256": "f200762078eb9880faf421a5b30f9ef3055b1d85c6f10780d75db4da8d8499f1",
+              "entry_size": 229,
+              "node_min_version": "20.0.0",
+              "runtime": "node",
+              "sha256": "764e4969792b5ddc0bb3fbdb552e6b05b5d10fea0083677404a027b570cf8b65",
+              "size": 3936551
+            }
+          }
+        },
+        "id": "pyright",
+        "initialization_options": {},
+        "languages": [
+          {
+            "extensions": [
+              "py",
+              "pyi"
+            ],
+            "filenames": [],
+            "id": "python"
+          }
+        ],
+        "license": "MIT",
+        "name": "Pyright",
+        "protocol_version": 1,
+        "repository": "https://github.com/merkr-software/CadencR",
+        "role": "type_checker",
+        "root_markers": [
+          "pyproject.toml",
+          "pyrightconfig.json",
+          "setup.py",
+          "setup.cfg",
+          "requirements.txt",
+          ".git"
+        ],
+        "version": "0.1.0"
+      }
+    }
+  },
+  "source": {
+    "repository": "https://github.com/merkr-software/CadencR",
+    "tag": "lsp-pyright-v0.1.0",
+    "commit": "ebd19991470b15aff76ea61bfed0f39e8318bb60"
+  },
+  "changelog": "Pyright package 0.1.0\n\nMinimum Cadencr application version: 0.16.1. This release publishes package assets only. Production marketplace catalog admission, the LSP revocation feed and the desktop release remain separate rollout steps.\n\nCanonical archive and runtime qualification: https://github.com/merkr-software/CadencR/actions/runs/42215738947\n\nRequires an existing Node.js >= 20.0.0. Qualification used Node.js 22.19.0; upstream supported-major restrictions still apply. Cadencr does not install Node.js or resolve project dependencies.\n\n<!-- cadencr-publication-binding:sha256:800265916f820e5f87d58802ccd8d44adfeb4e5084c91eeeb5100780776bcb55 -->"
+}

@@ -1,0 +1,83 @@
+{
+  "schema_version": 2,
+  "package": {
+    "kind": "lsp",
+    "package": {
+      "host": {
+        "compatibility": {
+          "min_app_version": "0.16.1"
+        },
+        "publisher": "merkr-software"
+      },
+      "lsp": {
+        "args": [],
+        "description": "Astro language server using pinned complete upstream npm distributions.",
+        "distribution": {
+          "binary": {
+            "darwin-aarch64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/lsp-astro-ls-v0.1.0/lsp-astro-ls-0.1.0-darwin-aarch64.tar.gz",
+              "entry": "adapter/adapter.mjs",
+              "entry_sha256": "0172d93445006df53251e5f15fd07b8b81ce8690c6f00d315fc963afb0c5a705",
+              "entry_size": 5001,
+              "node_min_version": "22.19.0",
+              "runtime": "node",
+              "sha256": "acbfd39ebe34c92a345ac06deca71f4fec5cb69bffe7cafb94f8e0fe289f9b07",
+              "size": 19651452
+            },
+            "darwin-x86_64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/lsp-astro-ls-v0.1.0/lsp-astro-ls-0.1.0-darwin-x86_64.tar.gz",
+              "entry": "adapter/adapter.mjs",
+              "entry_sha256": "0172d93445006df53251e5f15fd07b8b81ce8690c6f00d315fc963afb0c5a705",
+              "entry_size": 5001,
+              "node_min_version": "22.19.0",
+              "runtime": "node",
+              "sha256": "acbfd39ebe34c92a345ac06deca71f4fec5cb69bffe7cafb94f8e0fe289f9b07",
+              "size": 19651452
+            },
+            "linux-x86_64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/lsp-astro-ls-v0.1.0/lsp-astro-ls-0.1.0-linux-x86_64.tar.gz",
+              "entry": "adapter/adapter.mjs",
+              "entry_sha256": "0172d93445006df53251e5f15fd07b8b81ce8690c6f00d315fc963afb0c5a705",
+              "entry_size": 5001,
+              "node_min_version": "22.19.0",
+              "runtime": "node",
+              "sha256": "acbfd39ebe34c92a345ac06deca71f4fec5cb69bffe7cafb94f8e0fe289f9b07",
+              "size": 19651452
+            }
+          }
+        },
+        "id": "astro-ls",
+        "initialization_options": {},
+        "languages": [
+          {
+            "extensions": [
+              "astro"
+            ],
+            "filenames": [],
+            "id": "astro"
+          }
+        ],
+        "license": "Apache-2.0 AND MIT",
+        "name": "Astro language server",
+        "protocol_version": 1,
+        "repository": "https://github.com/merkr-software/CadencR",
+        "role": "type_checker",
+        "root_markers": [
+          "astro.config.mjs",
+          "astro.config.ts",
+          "tsconfig.json",
+          "jsconfig.json",
+          "package.json",
+          ".git"
+        ],
+        "version": "0.1.0"
+      }
+    }
+  },
+  "source": {
+    "repository": "https://github.com/merkr-software/CadencR",
+    "tag": "lsp-astro-ls-v0.1.0",
+    "commit": "ebd19991470b15aff76ea61bfed0f39e8318bb60"
+  },
+  "changelog": "Astro language server package 0.1.0\n\nMinimum Cadencr application version: 0.16.1. This release publishes package assets only. Production marketplace catalog admission, the LSP revocation feed and the desktop release remain separate rollout steps.\n\nCanonical archive and runtime qualification: https://github.com/merkr-software/CadencR/actions/runs/42215738947\n\nRequires an existing Node.js >= 22.19.0. Qualification used Node.js 22.19.0; upstream supported-major restrictions still apply. Cadencr does not install Node.js or resolve project dependencies.\n\n<!-- cadencr-publication-binding:sha256:cc975b91b9e4d1153111711c4376f7b29723e86373db246c4dfed4278b09e507 -->"
+}

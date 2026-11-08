@@ -1,0 +1,79 @@
+{
+  "schema_version": 2,
+  "package": {
+    "kind": "lsp",
+    "package": {
+      "host": {
+        "compatibility": {
+          "min_app_version": "0.16.1"
+        },
+        "publisher": "merkr-software"
+      },
+      "lsp": {
+        "args": [
+          "--stdio"
+        ],
+        "description": "YAML language server using pinned complete upstream npm distributions.",
+        "distribution": {
+          "binary": {
+            "darwin-aarch64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/lsp-yaml-language-server-v0.1.0/lsp-yaml-language-server-0.1.0-darwin-aarch64.tar.gz",
+              "entry": "adapter/adapter.mjs",
+              "entry_sha256": "0172d93445006df53251e5f15fd07b8b81ce8690c6f00d315fc963afb0c5a705",
+              "entry_size": 5001,
+              "node_min_version": "20.0.0",
+              "runtime": "node",
+              "sha256": "a9fab99f367aea4a6a6b8849446170ed659e38da7270e9c9f88bf3fd62f50053",
+              "size": 4551432
+            },
+            "darwin-x86_64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/lsp-yaml-language-server-v0.1.0/lsp-yaml-language-server-0.1.0-darwin-x86_64.tar.gz",
+              "entry": "adapter/adapter.mjs",
+              "entry_sha256": "0172d93445006df53251e5f15fd07b8b81ce8690c6f00d315fc963afb0c5a705",
+              "entry_size": 5001,
+              "node_min_version": "20.0.0",
+              "runtime": "node",
+              "sha256": "a9fab99f367aea4a6a6b8849446170ed659e38da7270e9c9f88bf3fd62f50053",
+              "size": 4551432
+            },
+            "linux-x86_64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/lsp-yaml-language-server-v0.1.0/lsp-yaml-language-server-0.1.0-linux-x86_64.tar.gz",
+              "entry": "adapter/adapter.mjs",
+              "entry_sha256": "0172d93445006df53251e5f15fd07b8b81ce8690c6f00d315fc963afb0c5a705",
+              "entry_size": 5001,
+              "node_min_version": "20.0.0",
+              "runtime": "node",
+              "sha256": "a9fab99f367aea4a6a6b8849446170ed659e38da7270e9c9f88bf3fd62f50053",
+              "size": 4551432
+            }
+          }
+        },
+        "id": "yaml-language-server",
+        "initialization_options": {},
+        "languages": [
+          {
+            "extensions": [
+              "yaml",
+              "yml"
+            ],
+            "filenames": [],
+            "id": "yaml"
+          }
+        ],
+        "license": "MIT",
+        "name": "YAML language server",
+        "protocol_version": 1,
+        "repository": "https://github.com/merkr-software/CadencR",
+        "role": "general",
+        "root_markers": [],
+        "version": "0.1.0"
+      }
+    }
+  },
+  "source": {
+    "repository": "https://github.com/merkr-software/CadencR",
+    "tag": "lsp-yaml-language-server-v0.1.0",
+    "commit": "ebd19991470b15aff76ea61bfed0f39e8318bb60"
+  },
+  "changelog": "YAML language server package 0.1.0\n\nMinimum Cadencr application version: 0.16.1. This release publishes package assets only. Production marketplace catalog admission, the LSP revocation feed and the desktop release remain separate rollout steps.\n\nCanonical archive and runtime qualification: https://github.com/merkr-software/CadencR/actions/runs/42215738947\n\nRequires an existing Node.js >= 20.0.0. Qualification used Node.js 22.19.0; upstream supported-major restrictions still apply. Cadencr does not install Node.js or resolve project dependencies.\n\n<!-- cadencr-publication-binding:sha256:610ef406b157ec33e8a4db66ab39e089aa8ffba50ed415968ca5c35af62d792a -->"
+}

@@ -1,0 +1,83 @@
+{
+  "schema_version": 2,
+  "package": {
+    "kind": "lsp",
+    "package": {
+      "host": {
+        "compatibility": {
+          "min_app_version": "0.16.1"
+        },
+        "publisher": "merkr-software"
+      },
+      "lsp": {
+        "args": [],
+        "description": "GraphQL language server using pinned complete upstream npm distributions.",
+        "distribution": {
+          "binary": {
+            "darwin-aarch64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/lsp-graphql-language-server-v0.1.0/lsp-graphql-language-server-0.1.0-darwin-aarch64.tar.gz",
+              "entry": "adapter/adapter.mjs",
+              "entry_sha256": "0172d93445006df53251e5f15fd07b8b81ce8690c6f00d315fc963afb0c5a705",
+              "entry_size": 5001,
+              "node_min_version": "22.19.0",
+              "runtime": "node",
+              "sha256": "ff78d516fa6cc2ef024105ade6c514abeabb4940a7916fb6a92155950ae89d58",
+              "size": 25191697
+            },
+            "darwin-x86_64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/lsp-graphql-language-server-v0.1.0/lsp-graphql-language-server-0.1.0-darwin-x86_64.tar.gz",
+              "entry": "adapter/adapter.mjs",
+              "entry_sha256": "0172d93445006df53251e5f15fd07b8b81ce8690c6f00d315fc963afb0c5a705",
+              "entry_size": 5001,
+              "node_min_version": "22.19.0",
+              "runtime": "node",
+              "sha256": "ff78d516fa6cc2ef024105ade6c514abeabb4940a7916fb6a92155950ae89d58",
+              "size": 25191697
+            },
+            "linux-x86_64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/lsp-graphql-language-server-v0.1.0/lsp-graphql-language-server-0.1.0-linux-x86_64.tar.gz",
+              "entry": "adapter/adapter.mjs",
+              "entry_sha256": "0172d93445006df53251e5f15fd07b8b81ce8690c6f00d315fc963afb0c5a705",
+              "entry_size": 5001,
+              "node_min_version": "22.19.0",
+              "runtime": "node",
+              "sha256": "ff78d516fa6cc2ef024105ade6c514abeabb4940a7916fb6a92155950ae89d58",
+              "size": 25191697
+            }
+          }
+        },
+        "id": "graphql-language-server",
+        "initialization_options": {},
+        "languages": [
+          {
+            "extensions": [
+              "graphql",
+              "gql"
+            ],
+            "filenames": [],
+            "id": "graphql"
+          }
+        ],
+        "license": "Apache-2.0 AND MIT",
+        "name": "GraphQL language server",
+        "protocol_version": 1,
+        "repository": "https://github.com/merkr-software/CadencR",
+        "role": "general",
+        "root_markers": [
+          "graphql.config.yml",
+          ".graphqlrc.yml",
+          ".graphqlrc",
+          "package.json",
+          ".git"
+        ],
+        "version": "0.1.0"
+      }
+    }
+  },
+  "source": {
+    "repository": "https://github.com/merkr-software/CadencR",
+    "tag": "lsp-graphql-language-server-v0.1.0",
+    "commit": "ebd19991470b15aff76ea61bfed0f39e8318bb60"
+  },
+  "changelog": "GraphQL language server package 0.1.0\n\nMinimum Cadencr application version: 0.16.1. This release publishes package assets only. Production marketplace catalog admission, the LSP revocation feed and the desktop release remain separate rollout steps.\n\nCanonical archive and runtime qualification: https://github.com/merkr-software/CadencR/actions/runs/42215738947\n\nRequires an existing Node.js >= 22.19.0. Qualification used Node.js 22.19.0; upstream supported-major restrictions still apply. Cadencr does not install Node.js or resolve project dependencies. Requires a project schema and GraphQL configuration; remote schema fetching is outside offline qualification.\n\n<!-- cadencr-publication-binding:sha256:4a6fab1bc7347a5fd49078f0928c1cb294a122fbef88ce283cb19855fccc51b9 -->"
+}
