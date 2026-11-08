@@ -1,0 +1,92 @@
+{
+  "schema_version": 2,
+  "package": {
+    "kind": "lsp",
+    "package": {
+      "host": {
+        "compatibility": {
+          "min_app_version": "0.16.1"
+        },
+        "publisher": "merkr-software"
+      },
+      "lsp": {
+        "args": [
+          "--stdio"
+        ],
+        "description": "CSS language server using pinned complete upstream npm distributions.",
+        "distribution": {
+          "binary": {
+            "darwin-aarch64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/lsp-css-language-server-v0.1.0/lsp-css-language-server-0.1.0-darwin-aarch64.tar.gz",
+              "entry": "node_modules/vscode-langservers-extracted/lib/css-language-server/node/cssServerMain.js",
+              "entry_sha256": "8cc5fb9dfbd95989fbfc1ee02cce9c0581b697e4abffcb910fcd1e0dce7bb5e8",
+              "entry_size": 2554,
+              "node_min_version": "22.0.0",
+              "runtime": "node",
+              "sha256": "77207590e924c12351601041aa14d0191c4b7a15159662a77712fa7cad38ecde",
+              "size": 13913074
+            },
+            "darwin-x86_64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/lsp-css-language-server-v0.1.0/lsp-css-language-server-0.1.0-darwin-x86_64.tar.gz",
+              "entry": "node_modules/vscode-langservers-extracted/lib/css-language-server/node/cssServerMain.js",
+              "entry_sha256": "8cc5fb9dfbd95989fbfc1ee02cce9c0581b697e4abffcb910fcd1e0dce7bb5e8",
+              "entry_size": 2554,
+              "node_min_version": "22.0.0",
+              "runtime": "node",
+              "sha256": "77207590e924c12351601041aa14d0191c4b7a15159662a77712fa7cad38ecde",
+              "size": 13913074
+            },
+            "linux-x86_64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/lsp-css-language-server-v0.1.0/lsp-css-language-server-0.1.0-linux-x86_64.tar.gz",
+              "entry": "node_modules/vscode-langservers-extracted/lib/css-language-server/node/cssServerMain.js",
+              "entry_sha256": "8cc5fb9dfbd95989fbfc1ee02cce9c0581b697e4abffcb910fcd1e0dce7bb5e8",
+              "entry_size": 2554,
+              "node_min_version": "22.0.0",
+              "runtime": "node",
+              "sha256": "77207590e924c12351601041aa14d0191c4b7a15159662a77712fa7cad38ecde",
+              "size": 13913074
+            }
+          }
+        },
+        "id": "css-language-server",
+        "initialization_options": {},
+        "languages": [
+          {
+            "extensions": [
+              "css"
+            ],
+            "filenames": [],
+            "id": "css"
+          },
+          {
+            "extensions": [
+              "scss"
+            ],
+            "filenames": [],
+            "id": "scss"
+          },
+          {
+            "extensions": [
+              "less"
+            ],
+            "filenames": [],
+            "id": "less"
+          }
+        ],
+        "license": "MIT",
+        "name": "CSS language server",
+        "protocol_version": 1,
+        "repository": "https://github.com/merkr-software/CadencR",
+        "role": "general",
+        "root_markers": [],
+        "version": "0.1.0"
+      }
+    }
+  },
+  "source": {
+    "repository": "https://github.com/merkr-software/CadencR",
+    "tag": "lsp-css-language-server-v0.1.0",
+    "commit": "ebd19991470b15aff76ea61bfed0f39e8318bb60"
+  },
+  "changelog": "CSS language server package 0.1.0\n\nMinimum Cadencr application version: 0.16.1. This release publishes package assets only. Production marketplace catalog admission, the LSP revocation feed and the desktop release remain separate rollout steps.\n\nCanonical archive and runtime qualification: https://github.com/merkr-software/CadencR/actions/runs/42215738947\n\nRequires an existing Node.js >= 22.0.0. Qualification used Node.js 22.19.0; upstream supported-major restrictions still apply. Cadencr does not install Node.js or resolve project dependencies.\n\n<!-- cadencr-publication-binding:sha256:a3c926769dba0655f1a3dec261ab1fbd248c1f631a8355976eda2e5400a00ef8 -->"
+}
