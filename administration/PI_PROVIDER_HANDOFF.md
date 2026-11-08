@@ -18,6 +18,13 @@ Accepted packages, submissions, assets and signed history remain immutable.
 Installed receipts and conversations are retained; no session migration or
 blanket identity revocation is part of this operation.
 
+## Administrative review boundary
+
+Ordinary contribution validation must reject a new handoff. Review this operation
+with the qualified CLI's explicit `registry validate --administrative` mode
+against the current trusted main revision. Never make candidate metadata select
+administrative authority in the ordinary contribution workflow.
+
 ## Publication order
 
 1. Qualify a released handoff-capable CLI and promote its version/tag/digest pin.
