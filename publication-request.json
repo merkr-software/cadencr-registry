@@ -15,7 +15,7 @@
   },
   "publications": [
     {
-      "submission": "submissions/pi-0.6.0.json",
+      "submission": "publication/submissions/pi-0.6.0.json",
       "registry_commit": "2af87adff63802926d5d88f13997e6021655ecaf"
     },
     {

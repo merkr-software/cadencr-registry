@@ -1,0 +1,61 @@
+{
+  "schema_version": 2,
+  "package": {
+    "kind": "provider",
+    "package": {
+      "agent": {
+        "id": "pi",
+        "name": "Pi",
+        "version": "0.6.0",
+        "description": "Independent ACP connector for Pi's native RPC mode.",
+        "repository": "https://github.com/edjubert/cadencr-plugin-provider-pi",
+        "website": "https://github.com/earendil-works/pi",
+        "authors": [
+          "edjubert"
+        ],
+        "license": "Apache-2.0",
+        "distribution": {
+          "binary": {
+            "darwin-aarch64": {
+              "archive": "https://github.com/edjubert/cadencr-plugin-provider-pi/releases/download/v0.6.0/provider-pi-0.6.0-darwin-aarch64.tar.gz",
+              "cmd": "bin/provider",
+              "sha256": "0af5611cea2cd91034cd9261b096fff4e0ffd7b623c6f1e3396d6beb6cf11390"
+            },
+            "darwin-x86_64": {
+              "archive": "https://github.com/edjubert/cadencr-plugin-provider-pi/releases/download/v0.6.0/provider-pi-0.6.0-darwin-x86_64.tar.gz",
+              "cmd": "bin/provider",
+              "sha256": "1a2fbfac086d1108e3f4ebcb3bdbd7adece79accc11315fddf41b1f796be2199"
+            },
+            "linux-aarch64": {
+              "archive": "https://github.com/edjubert/cadencr-plugin-provider-pi/releases/download/v0.6.0/provider-pi-0.6.0-linux-aarch64.tar.gz",
+              "cmd": "bin/provider",
+              "sha256": "602be436fc85ec927154670fed75cffbe6f91437b301d36187b80ab23e1e47a6"
+            },
+            "linux-x86_64": {
+              "archive": "https://github.com/edjubert/cadencr-plugin-provider-pi/releases/download/v0.6.0/provider-pi-0.6.0-linux-x86_64.tar.gz",
+              "cmd": "bin/provider",
+              "sha256": "31b758c2f16f49f9331f1f13aff03959951526ab6e8cf612ea9269578f28454a"
+            }
+          }
+        }
+      },
+      "host": {
+        "publisher": "edjubert",
+        "compatibility": {
+          "min_app_version": "0.16.0"
+        },
+        "assets": {
+          "icon": "icon.svg",
+          "readme": "README.md",
+          "license": "LICENSE"
+        }
+      }
+    }
+  },
+  "source": {
+    "repository": "https://github.com/edjubert/cadencr-plugin-provider-pi",
+    "commit": "c527b855fe7a225ffc442b6110bd7208af96f889",
+    "tag": "v0.6.0"
+  },
+  "changelog": "## Pi 0.6.0\n\n- Declare a `mode` selector (ACP category `mode`) in the `models` output and\n  in every live session, with each choice annotated\n  `_meta.cadencr.permissionMode` (`ask` → `ask`, `accept-edits` →\n  `acceptEdits`, `smart-approve` → `auto`, `auto-approve` →\n  `bypassPermissions`), mirroring the Mistral Vibe connector. CadencR maps\n  its permission-mode chip onto these values and applies the selected mode\n  to the live session through `session/set_config_option`.\n- In `ask` mode, extension `confirm`/`select` dialogs are bridged to ACP\n  `session/request_permission` as before. In every other mode the connector\n  answers them itself (confirm → yes, select → first option), so\n  auto-approve no longer prompts on every dialog.\n\n## Pi 0.5.0\n\n- Register the connector under the `pi` provider ID with display name **Pi**\n  in marketplace metadata, local descriptors and ACP initialization. The\n  registry handed the `pi` namespace over to this connector after retiring\n  its first-party `pi` plugin (registry PR #22). Publisher remains\n  `edjubert`, and workspace-bound `pidancr-v1.` session identities are\n  unchanged.\n- Publish new versioned archives through GitHub's immutable-release protection.\n  Publication checks the server-side `immutable` flag after all draft assets\n  have been uploaded and the release has been published.\n- Include the displayed name in every native qualification record and require\n  it to match the package metadata during final assembly.\n- Use process-wide identifiers for extension confirmation requests and qualify\n  independent confirmation responses in simultaneous sessions with native Pi.\n- Recommend and qualify native Pi `1.5.0`; its production dependencies must pass\n  `npm audit` on every release runner.\n\nCompatible with CadencR >=0.16.0. Requires a separately installed Pi CLI\n(`1.5.0` audited) and Node.js >=22.19.0. Authenticate using Pi itself.\nCredentials and the native Pi runtime are not bundled.\nPi tools execute without per-tool approval; extension confirm/select dialogs\nare bridged to ACP permissions. Existing raw Pi session IDs from connector\n0.1.0 require a new CadencR conversation; their native Pi session files remain\navailable through Pi. Sessions from `pidancr 0.2.0` retain their identities.\n"
+}
