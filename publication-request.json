@@ -3,9 +3,9 @@
   "repository": "merkr-software/cadencr-registry",
   "key_id": "cadencr-registry-1",
   "discovery_branch": "marketplace-v2-admin",
-  "generated_at": "2026-11-08T21:36:37Z",
-  "expires_at": "2026-11-21T21:36:37Z",
-  "previous_index": "administration/pi-baseline.json",
+  "generated_at": "2026-11-11T11:34:54Z",
+  "expires_at": "2026-11-24T11:34:54Z",
+  "previous_index": "publication/previous-index.json",
   "public_key": "publication/public.pem",
   "trust": {
     "manifest": "publication/trust-manifest.json",
@@ -13,24 +13,15 @@
     "root_key_id": "cadencr-root-1",
     "minimum_generation": 1
   },
-  "publications": [],
-  "provider_handoffs": [
+  "publications": [
     {
-      "provider_id": "pi",
-      "from": {
-        "publisher": "cadencr",
-        "repository": "https://github.com/merkr-software/CadencR"
-      },
-      "to": {
-        "publisher": "edjubert",
-        "repository": "https://github.com/edjubert/cadencr-plugin-provider-pi"
-      },
-      "retired_versions": {
-        "0.4.0": "8f434a4793ac955b4d76c49f8b36627a56154a60e31fc615f2f620d789a71add",
-        "0.4.1": "efd43c79b5380cbc5ea2a934087a273089568edaa11e52ed80881cb187beb8b2"
-      },
-      "authorization": "https://github.com/merkr-software/cadencr-registry/pull/22#issuecomment-6630319571",
-      "reason": "Retire the first-party Pi connector and transfer the provider namespace to edjubert. Historical releases and existing installations remain intact. Old connector sessions are not declared compatible with the successor."
+      "submission": "submissions/pi-0.6.0.json",
+      "registry_commit": "2af87adff63802926d5d88f13997e6021655ecaf"
+    },
+    {
+      "submission": "submissions/review-nvim-0.1.5.json",
+      "registry_commit": "90298266b47b5bac0fa32134f4e3459c62b79d0c"
     }
-  ]
+  ],
+  "provider_handoffs": []
 }
