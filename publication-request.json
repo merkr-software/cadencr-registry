@@ -3,8 +3,8 @@
   "repository": "merkr-software/cadencr-registry",
   "key_id": "cadencr-registry-1",
   "discovery_branch": "marketplace-v2-admin",
-  "generated_at": "2026-11-11T11:34:54Z",
-  "expires_at": "2026-11-24T11:34:54Z",
+  "generated_at": "2026-11-14T08:35:51Z",
+  "expires_at": "2026-11-27T08:35:51Z",
   "previous_index": "publication/previous-index.json",
   "public_key": "publication/public.pem",
   "trust": {
@@ -15,12 +15,12 @@
   },
   "publications": [
     {
-      "submission": "publication/submissions/pi-0.6.0.json",
-      "registry_commit": "2af87adff63802926d5d88f13997e6021655ecaf"
+      "submission": "submissions/catppuccin-frost-mocha-0.1.1.json",
+      "registry_commit": "8971ce0d998222d37eaaeaf00ce4597d06666080"
     },
     {
-      "submission": "submissions/review-nvim-0.1.5.json",
-      "registry_commit": "90298266b47b5bac0fa32134f4e3459c62b79d0c"
+      "submission": "submissions/catppuccin-frost-latte-0.1.1.json",
+      "registry_commit": "8971ce0d998222d37eaaeaf00ce4597d06666080"
     }
   ],
   "provider_handoffs": []
