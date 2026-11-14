@@ -1,0 +1,33 @@
+{
+  "schema_version": 2,
+  "package": {
+    "kind": "theme",
+    "package": {
+      "theme": {
+        "id": "catppuccin-frost-mocha",
+        "name": "Catppuccin Frost Mocha",
+        "description": "Catppuccin Mocha dark palette with pronounced drifting mauve, teal and blue halos and fine grain",
+        "version": "0.1.1",
+        "repository": "https://github.com/edjubert/cadencr-theme-catppuccin-frost",
+        "license": "Apache-2.0",
+        "document_version": 1,
+        "distribution": {
+          "archive": "https://github.com/edjubert/cadencr-theme-catppuccin-frost/releases/download/v0.1.1/catppuccin-frost-mocha-0.1.1.tar.gz",
+          "sha256": "f0c85f5fe2eabed729c40dd54292d3064a31f7d9d3ac5ec10fc230c9949023e0"
+        }
+      },
+      "host": {
+        "publisher": "edjubert",
+        "compatibility": {
+          "min_app_version": "0.16.2"
+        }
+      }
+    }
+  },
+  "source": {
+    "repository": "https://github.com/edjubert/cadencr-theme-catppuccin-frost",
+    "commit": "2ae7de95ff4d4be2b445b81c4dfd382f40c8bf61",
+    "tag": "v0.1.1"
+  },
+  "changelog": "Stronger halo intensity in Catppuccin Frost Mocha; mauve and teal positions swapped, with mauve toward the upper left, teal toward the right and blue toward the bottom. Declarative theme.json only; frosted overlay blur requires support in the CadencR application."
+}

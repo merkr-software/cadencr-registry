@@ -1,0 +1,24 @@
+{
+  "kind": "theme",
+  "package": {
+    "theme": {
+      "id": "catppuccin-frost-mocha",
+      "name": "Catppuccin Frost Mocha",
+      "description": "Catppuccin Mocha dark palette with pronounced drifting mauve, teal and blue halos and fine grain",
+      "version": "0.1.1",
+      "repository": "https://github.com/edjubert/cadencr-theme-catppuccin-frost",
+      "license": "Apache-2.0",
+      "document_version": 1,
+      "distribution": {
+        "archive": "https://github.com/edjubert/cadencr-theme-catppuccin-frost/releases/download/v0.1.1/catppuccin-frost-mocha-0.1.1.tar.gz",
+        "sha256": "f0c85f5fe2eabed729c40dd54292d3064a31f7d9d3ac5ec10fc230c9949023e0"
+      }
+    },
+    "host": {
+      "publisher": "edjubert",
+      "compatibility": {
+        "min_app_version": "0.16.2"
+      }
+    }
+  }
+}

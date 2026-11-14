@@ -1,0 +1,24 @@
+{
+  "kind": "theme",
+  "package": {
+    "theme": {
+      "id": "catppuccin-frost-latte",
+      "name": "Catppuccin Frost Latte",
+      "description": "Catppuccin Latte light palette with pronounced drifting mauve, teal and blue halos and fine grain",
+      "version": "0.1.1",
+      "repository": "https://github.com/edjubert/cadencr-theme-catppuccin-frost",
+      "license": "Apache-2.0",
+      "document_version": 1,
+      "distribution": {
+        "archive": "https://github.com/edjubert/cadencr-theme-catppuccin-frost/releases/download/v0.1.1/catppuccin-frost-latte-0.1.1.tar.gz",
+        "sha256": "9938aed528694aeb88aa9489844a869952d9434a401fa7fd81d0540bf495c4a9"
+      }
+    },
+    "host": {
+      "publisher": "edjubert",
+      "compatibility": {
+        "min_app_version": "0.16.2"
+      }
+    }
+  }
+}
