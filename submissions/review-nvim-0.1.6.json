@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "package": {
+    "kind": "tab",
+    "package": {
+      "tab": {
+        "id": "review-nvim",
+        "name": "review.nvim",
+        "description": "Review GitLab merge requests and GitHub or Codeberg pull requests in an embedded Neovim session, with local comment drafts.",
+        "version": "0.1.6",
+        "repository": "https://github.com/edjubert/review.nvim",
+        "license": "MIT",
+        "api_version": 1,
+        "backend": {
+          "protocol": 1,
+          "reasoning": "Runs your installed Neovim in a pseudo-terminal with the bundled review.nvim plugin and your Neovim configuration. Git and authenticated glab/gh or curl access the review host; comments stay local until explicitly submitted in Neovim."
+        },
+        "distribution": {
+          "archive": "https://github.com/edjubert/review.nvim/releases/download/cadencr-v0.1.6/tab.tar.gz",
+          "sha256": "cb0139e9b8e8934b770ea2b0cabd3d5aed4a459ceaf3f24e3ae3c90c15364bc4",
+          "binary": {
+            "darwin-aarch64": {
+              "archive": "https://github.com/edjubert/review.nvim/releases/download/cadencr-v0.1.6/tab-backend-darwin-aarch64.tar.gz",
+              "sha256": "092dad45882bf97440c4687c0c93b7a4f7de5f6a50caeceb60bdf74ba36ac647",
+              "size": 2582875,
+              "cmd": "bin/darwin-aarch64/review-nvim",
+              "executable_sha256": "ffaa571183b3de19eff63bd85d4f0ffa535a56d60d9a4a3371aca3df64dba394",
+              "executable_size": 4472432
+            },
+            "darwin-x86_64": {
+              "archive": "https://github.com/edjubert/review.nvim/releases/download/cadencr-v0.1.6/tab-backend-darwin-x86_64.tar.gz",
+              "sha256": "c6eaa61bf2ce1e78fa60fd69982cc348fc989948da7ce5699e769eba231e2b55",
+              "size": 2761221,
+              "cmd": "bin/darwin-x86_64/review-nvim",
+              "executable_sha256": "fc9889bd60b22c871b998b1118d41fe7c7fde976730ce661d691fb5b7bcf12ea",
+              "executable_size": 4706080
+            },
+            "linux-x86_64": {
+              "archive": "https://github.com/edjubert/review.nvim/releases/download/cadencr-v0.1.6/tab-backend-linux-x86_64.tar.gz",
+              "sha256": "c3126f9d441603eef3a12c615430ae7c565bacfdf60f3b2598724839c806081c",
+              "size": 2774513,
+              "cmd": "bin/linux-x86_64/review-nvim",
+              "executable_sha256": "bb7a99f033c2af62e406d2faea479c7e82c175dba58d3c9800065f2886b7f8bd",
+              "executable_size": 4739209
+            }
+          }
+        }
+      },
+      "host": {
+        "publisher": "edjubert",
+        "compatibility": {
+          "min_app_version": "0.16.0"
+        }
+      }
+    }
+  },
+  "source": {
+    "repository": "https://github.com/edjubert/review.nvim",
+    "commit": "7b3aaacf81d28e4268a8ae7e859059fb8e833048",
+    "tag": "cadencr-v0.1.6"
+  },
+  "changelog": "Batch GitLab conversation resolution with stale-discussion checks, confirmed partial results and REST fallback; improve conversation loading, pipeline status and job log previews."
+}
