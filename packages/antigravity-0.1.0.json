@@ -1,0 +1,48 @@
+{
+  "kind": "provider",
+  "package": {
+    "agent": {
+      "description": "Use the Google Antigravity CLI as a CadencR agent through ACP. Requires a local installation of agy.",
+      "distribution": {
+        "binary": {
+          "darwin-aarch64": {
+            "archive": "https://github.com/merkr-software/CadencR/releases/download/plugins%2Fprovider-antigravity%2Fv0.1.0/provider-antigravity-0.1.0-darwin-aarch64.tar.gz",
+            "cmd": "bin/provider",
+            "sha256": "e3223bf847049fd50906a0dfd6bc8e1cada8a9c52327fa3d5d49af3daf6cbf6d"
+          },
+          "darwin-x86_64": {
+            "archive": "https://github.com/merkr-software/CadencR/releases/download/plugins%2Fprovider-antigravity%2Fv0.1.0/provider-antigravity-0.1.0-darwin-x86_64.tar.gz",
+            "cmd": "bin/provider",
+            "sha256": "4829ab70fcefa609f6c5c89a2c113a3d6f64f0ab068a53915838ecacea0a1e2e"
+          },
+          "linux-aarch64": {
+            "archive": "https://github.com/merkr-software/CadencR/releases/download/plugins%2Fprovider-antigravity%2Fv0.1.0/provider-antigravity-0.1.0-linux-aarch64.tar.gz",
+            "cmd": "bin/provider",
+            "sha256": "04e8b8cd8ca5968f9bb36e768e2f330abe8f54251652e47c2206cbf59be960fe"
+          },
+          "linux-x86_64": {
+            "archive": "https://github.com/merkr-software/CadencR/releases/download/plugins%2Fprovider-antigravity%2Fv0.1.0/provider-antigravity-0.1.0-linux-x86_64.tar.gz",
+            "cmd": "bin/provider",
+            "sha256": "e049308febddf32d2c380c2f4ddca04c4e0f761fa1bdde1277b161f499915eea"
+          }
+        }
+      },
+      "id": "antigravity",
+      "license": "Apache-2.0",
+      "name": "Google Antigravity",
+      "repository": "https://github.com/merkr-software/CadencR",
+      "version": "0.1.0"
+    },
+    "host": {
+      "assets": {
+        "icon": "icon.svg",
+        "license": "LICENSE",
+        "readme": "README.md"
+      },
+      "compatibility": {
+        "min_app_version": "0.16.4"
+      },
+      "publisher": "cadencr"
+    }
+  }
+}
