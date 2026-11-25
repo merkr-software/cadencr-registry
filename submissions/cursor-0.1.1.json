@@ -1,0 +1,57 @@
+{
+  "changelog": "Recognize CadencR-attached MCP tools when creating or restoring a Cursor session. CadencR v0.16.4 can approve eligible calls once in Auto Review. Cursor launcher ports stay out of the project's port list.",
+  "package": {
+    "kind": "provider",
+    "package": {
+      "agent": {
+        "description": "External Cadencr provider connector for the Cursor Agent CLI (ACP proxy)",
+        "distribution": {
+          "binary": {
+            "darwin-aarch64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/plugins%2Fprovider-cursor%2Fv0.1.1/provider-cursor-0.1.1-darwin-aarch64.tar.gz",
+              "cmd": "bin/provider",
+              "sha256": "1370203bccfe0bf1ea39aea0bd4f48d3aa16bbee6f7edbf0bc0d2181a0094d0d"
+            },
+            "darwin-x86_64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/plugins%2Fprovider-cursor%2Fv0.1.1/provider-cursor-0.1.1-darwin-x86_64.tar.gz",
+              "cmd": "bin/provider",
+              "sha256": "28cf0f602d00e4c79c341edbb5302feb447e7df5b7f3395afd508257a9cdef09"
+            },
+            "linux-aarch64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/plugins%2Fprovider-cursor%2Fv0.1.1/provider-cursor-0.1.1-linux-aarch64.tar.gz",
+              "cmd": "bin/provider",
+              "sha256": "7f7e96f901ac805923733d68b5f33c23d3378e5f870b65fa5b09c42a33229475"
+            },
+            "linux-x86_64": {
+              "archive": "https://github.com/merkr-software/CadencR/releases/download/plugins%2Fprovider-cursor%2Fv0.1.1/provider-cursor-0.1.1-linux-x86_64.tar.gz",
+              "cmd": "bin/provider",
+              "sha256": "0cfa734e0dc428e490f48e0f7c13e367aa2cb2dedc5307ab95a4254fbec211e9"
+            }
+          }
+        },
+        "id": "cursor",
+        "license": "Apache-2.0",
+        "name": "Cursor",
+        "repository": "https://github.com/merkr-software/CadencR",
+        "version": "0.1.1"
+      },
+      "host": {
+        "assets": {
+          "icon": "icon.svg",
+          "license": "LICENSE",
+          "readme": "README.md"
+        },
+        "compatibility": {
+          "min_app_version": "0.16.0"
+        },
+        "publisher": "cadencr"
+      }
+    }
+  },
+  "schema_version": 2,
+  "source": {
+    "commit": "5107c7be9919c255f91cda4fb88fc8e834aed1ae",
+    "repository": "https://github.com/merkr-software/CadencR",
+    "tag": "plugins/provider-cursor/v0.1.1"
+  }
+}
