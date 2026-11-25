@@ -1,0 +1,54 @@
+{
+  "kind": "tab",
+  "package": {
+    "tab": {
+      "id": "lazygit",
+      "name": "LazyGit",
+      "description": "Run LazyGit in the conversation's worktree, with CadencR theme colors and your existing Git configuration.",
+      "version": "0.2.1",
+      "repository": "https://github.com/edjubert/cadencr-plugin-lazygit",
+      "license": "MIT",
+      "api_version": 1,
+      "backend": {
+        "protocol": 1,
+        "reasoning": "Runs your installed LazyGit in a terminal in the conversation's worktree, using your Git configuration and credentials. LazyGit can change files, commit and push through your actions."
+      },
+      "distribution": {
+        "archive": "https://github.com/edjubert/cadencr-plugin-lazygit/releases/download/v0.2.1/tab.tar.gz",
+        "sha256": "96ed247553f77da91cee440d175e8ea98841d25aa4619d07561b3ec812b20750",
+        "binary": {
+          "darwin-aarch64": {
+            "sha256": "ff946a75e848f08a88256e4b1e93a2a6361da016f8a84b2e547d449430f94478",
+            "size": 2806188,
+            "cmd": "bin/darwin-aarch64/lazygit",
+            "executable_sha256": "1216e18783fe3f6e681b02d120bbeffe8a541b36fd1b36d814704d0aa7709d0c",
+            "executable_size": 4915216,
+            "archive": "https://github.com/edjubert/cadencr-plugin-lazygit/releases/download/v0.2.1/tab-backend-darwin-aarch64.tar.gz"
+          },
+          "darwin-x86_64": {
+            "sha256": "73e11737a8308077d4114a6bed89851589f05888d5a34e4e3d382939d6f340ae",
+            "size": 2998814,
+            "cmd": "bin/darwin-x86_64/lazygit",
+            "executable_sha256": "b3f26fc52b0dbf03f4792d1da8afe306623c5d7210e23ccd82c473404bfd95a9",
+            "executable_size": 5149520,
+            "archive": "https://github.com/edjubert/cadencr-plugin-lazygit/releases/download/v0.2.1/tab-backend-darwin-x86_64.tar.gz"
+          },
+          "linux-x86_64": {
+            "sha256": "aa902abaed25ade958f64daaf8b266117ddc5c8d1c3494f42bec3d2484720488",
+            "size": 3015445,
+            "cmd": "bin/linux-x86_64/lazygit",
+            "executable_sha256": "279b19795dff65c273aa13a05d723697195965db8e2304b30ca3b334d08efd25",
+            "executable_size": 5187988,
+            "archive": "https://github.com/edjubert/cadencr-plugin-lazygit/releases/download/v0.2.1/tab-backend-linux-x86_64.tar.gz"
+          }
+        }
+      }
+    },
+    "host": {
+      "publisher": "edjubert",
+      "compatibility": {
+        "min_app_version": "0.16.2"
+      }
+    }
+  }
+}
