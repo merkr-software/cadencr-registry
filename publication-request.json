@@ -3,8 +3,8 @@
   "repository": "merkr-software/cadencr-registry",
   "key_id": "cadencr-registry-1",
   "discovery_branch": "marketplace-v2-admin",
-  "generated_at": "2026-11-25T09:11:42Z",
-  "expires_at": "2026-12-08T09:11:42Z",
+  "generated_at": "2026-11-25T10:09:21Z",
+  "expires_at": "2026-12-08T10:09:21Z",
   "previous_index": "publication/previous-index.json",
   "public_key": "publication/public.pem",
   "trust": {
@@ -15,8 +15,8 @@
   },
   "publications": [
     {
-      "submission": "submissions/tsgo-0.1.1.json",
-      "registry_commit": "531911146b6298dc21b3d3cece5221b67a261da7"
+      "submission": "submissions/antigravity-0.1.0.json",
+      "registry_commit": "cbf52f5b3f7eb014b8e5992a805796e3133c948d"
     }
   ],
   "provider_handoffs": []
