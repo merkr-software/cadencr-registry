@@ -3,8 +3,8 @@
   "repository": "merkr-software/cadencr-registry",
   "key_id": "cadencr-registry-1",
   "discovery_branch": "marketplace-v2-admin",
-  "generated_at": "2026-11-14T08:35:51Z",
-  "expires_at": "2026-11-27T08:35:51Z",
+  "generated_at": "2026-11-25T09:11:42Z",
+  "expires_at": "2026-12-08T09:11:42Z",
   "previous_index": "publication/previous-index.json",
   "public_key": "publication/public.pem",
   "trust": {
@@ -15,12 +15,8 @@
   },
   "publications": [
     {
-      "submission": "submissions/catppuccin-frost-mocha-0.1.1.json",
-      "registry_commit": "8971ce0d998222d37eaaeaf00ce4597d06666080"
-    },
-    {
-      "submission": "submissions/catppuccin-frost-latte-0.1.1.json",
-      "registry_commit": "8971ce0d998222d37eaaeaf00ce4597d06666080"
+      "submission": "submissions/tsgo-0.1.1.json",
+      "registry_commit": "531911146b6298dc21b3d3cece5221b67a261da7"
     }
   ],
   "provider_handoffs": []
