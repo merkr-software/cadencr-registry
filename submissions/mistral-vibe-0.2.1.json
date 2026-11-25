@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "package": {
+    "kind": "provider",
+    "package": {
+      "agent": {
+        "id": "mistral-vibe",
+        "name": "Mistral Vibe",
+        "version": "0.2.1",
+        "description": "Mistral Vibe coding agent, bridged to CadencR through its native ACP binary vibe-acp.",
+        "authors": [
+          "edjubert"
+        ],
+        "license": "Apache-2.0",
+        "repository": "https://github.com/edjubert/cadencr-plugin-provider-vibe",
+        "website": "https://mistral.ai/vibe",
+        "distribution": {
+          "binary": {
+            "darwin-aarch64": {
+              "archive": "https://github.com/edjubert/cadencr-plugin-provider-vibe/releases/download/v0.2.1/provider-mistral-vibe-0.2.1-darwin-aarch64.tar.gz",
+              "cmd": "bin/provider",
+              "sha256": "a31f1b200aa2f7340184fe762941730bd97ca2e9b22403f7e71b4ed89ae7b280"
+            }
+          }
+        }
+      },
+      "host": {
+        "publisher": "edjubert",
+        "compatibility": {
+          "min_app_version": "0.16.0"
+        },
+        "assets": {
+          "icon": "icon.svg",
+          "readme": "README.md",
+          "license": "LICENSE"
+        }
+      }
+    }
+  },
+  "source": {
+    "repository": "https://github.com/edjubert/cadencr-plugin-provider-vibe",
+    "commit": "779dff802e4df9ca5344e9aad708dbfb6165eb09",
+    "tag": "v0.2.1"
+  },
+  "changelog": "Expose Vibe's thinking selector as CadencR's native thinking-effort control: discovery re-categorizes the option from 'thinking' to the standard ACP 'thought_level' while keeping the option id verbatim, so session/set_config_option still targets Vibe's own thinking option."
+}
